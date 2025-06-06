@@ -3,6 +3,7 @@
 import { login } from "@/app/login/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Input } from "@/components/core/input";
+import { RadioGroup } from "@/components/core/radio-group";
 import { Select } from "@/components/core/select";
 import { SubmitButton } from "@/components/core/submit-button";
 import { profileSchema } from "@/lib/zod";
@@ -71,20 +72,24 @@ export const ProfileForm = () => {
 					))}
 				</Select>
 				<ErrorText>{fields.department.errors}</ErrorText>
-				{positions.map((position) => (
-					<div key={position.id}>
-						<input
-							type="radio"
-							id={position.name}
-							name={fields.position.name}
-							value={position.id}
-							defaultChecked={
-								Number(fields.position.initialValue) === position.id
-							}
-						/>
-						<label htmlFor={position.name}>{position.name}</label>
-					</div>
-				))}
+				<RadioGroup
+					inputProps={getInputProps(fields.position, { type: "text" })}
+				>
+					{(name, defaultValue) =>
+						positions.map((position) => (
+							<label className="flex items-center gap-1" key={position.id}>
+								<input
+									type="radio"
+									name={name}
+									value={position.id}
+									defaultChecked={Number(defaultValue) === position.id}
+								/>
+								<span>{position.name}</span>
+							</label>
+						))
+					}
+				</RadioGroup>
+
 				<ErrorText>{fields.position.errors}</ErrorText>
 				<SubmitButton>登録</SubmitButton>
 			</div>

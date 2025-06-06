@@ -1,10 +1,22 @@
-import type { getInputProps } from "@conform-to/react";
+import type { ComponentProps } from "react";
 
-type RadioGroupProps = {
-	inputProps: ReturnType<typeof getInputProps>;
-	children: (id: string, initialValue: string | undefined) => React.ReactNode;
+type RadioGroupProps = Omit<ComponentProps<"div">, "children"> & {
+	inputProps: ComponentProps<"input">;
+	children: (
+		name: string | undefined,
+		defaultValue: string | number | readonly string[] | undefined,
+	) => React.ReactNode;
 };
 
-export const RadioGroup = ({ inputProps, children }: RadioGroupProps) => {
-	return <div>{children(inputProps.id, inputProps.defaultValue)}</div>;
+export const RadioGroup = ({
+	className = "",
+	inputProps,
+	children,
+	...props
+}: RadioGroupProps) => {
+	return (
+		<div className={`flex gap-2 ${className}`} {...props}>
+			{children(inputProps.name, inputProps.defaultValue)}
+		</div>
+	);
 };
