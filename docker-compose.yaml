@@ -1,0 +1,51 @@
+services:
+  nextjs:
+    container_name: nextjs
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    tty: true
+    ports:
+      - 3000:3000    
+    volumes:
+      - ./nextjs:/workspace/nextjs
+      - /workspace/nextjs/node_modules
+    environment:
+      AUTH_SECRET: "cEPKRUHbWS2ylvvhPc+Mdbr1pPAmt1Ky0qxJVGdhXp0="
+      API_URL: "http://fastapi:8000/api"
+
+  fastapi:
+    container_name: fastapi
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    depends_on:
+      - postgres
+    tty: true
+    ports:
+      - 8000:8000
+    volumes:
+      - ./fastapi:/workspace/fastapi
+      - /workspace/fastapi/.venv
+    environment:
+      PYTHONDONTWRITEBYTECODE: "1"
+      DB_USER: "postgres"
+      DB_HOST: "postgres"
+      DB_PORT: "5432"
+      DB_PASSWORD: "password"
+      DB_NAME: "postgres"
+      JWT_SECRET_KEY: "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7"
+      JET_ALGORITHM: "HS256"
+      JWT_EXPIRE_MINUTES: 30
+
+  postgres:
+    container_name: postgres
+    build:
+      context: .
+      dockerfile: Dockerfile.database
+    ports:
+      - 5432:5432
+    environment:
+      TZ: Asia/Tokyo
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password

@@ -1,0 +1,16 @@
+FROM node:lts
+
+RUN npm install -g @biomejs/biome
+
+WORKDIR /workspace/nextjs
+
+COPY ./nextjs/package*.json ./
+
+RUN npm ci
+
+COPY ./nextjs/src ./src
+COPY ./nextjs/public ./public
+COPY ./nextjs/next.config.ts .
+COPY ./nextjs/tsconfig.json .
+
+CMD ["npm", "run", "dev"]
