@@ -3,6 +3,7 @@
 import { login } from "@/app/login/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Input } from "@/components/core/input";
+import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
 import { Select } from "@/components/core/select";
 import { SubmitButton } from "@/components/core/submit-button";
@@ -77,38 +78,20 @@ export const ProfileForm = () => {
 					))}
 				</Select>
 				<ErrorText>{fields.department.errors}</ErrorText>
-				{/* <RadioGroup
-					inputProps={getInputProps(fields.position, { type: "text" })}
-				>
-					{(name, defaultValue) =>
-						positions.map((position) => (
-							<label className="flex items-center gap-1" key={position.value}>
-								<input
-									type="radio"
-									name={name}
-									value={position.value}
-									defaultChecked={Number(defaultValue) === position.value}
-								/>
-								<span>{position.label}</span>
-							</label>
-						))
-					}
-				</RadioGroup> */}
-				<div className="flex gap-2">
+				<RadioGroup>
 					{positions.map((position) => (
-						<label className="flex items-center gap-1" key={position.value}>
-							<input
-								type="radio"
-								name={fields.position.name}
-								value={position.value}
-								defaultChecked={
-									Number(fields.position.initialValue) === position.value
-								}
-							/>
-							<span>{position.label}</span>
-						</label>
+						<Radio
+							key={position.value}
+							name={fields.position.name}
+							value={position.value}
+							defaultChecked={
+								Number(fields.position.initialValue) === position.value
+							}
+						>
+							{position.label}
+						</Radio>
 					))}
-				</div>
+				</RadioGroup>
 
 				<ErrorText>{fields.position.errors}</ErrorText>
 				<SubmitButton>登録</SubmitButton>
