@@ -32,16 +32,19 @@ export const ProfileForm = () => {
 			position: 1,
 		},
 	});
-	const years = Array.from({ length: 40 }, (_, i) => i + 1);
+	const years = Array.from({ length: 40 }, (_, i) => ({
+		value: i + 1,
+		label: `${i + 1}年目`,
+	}));
 	const departments = [
-		{ id: 1, name: "人事部" },
-		{ id: 2, name: "総務部" },
-		{ id: 3, name: "開発センター" },
-		{ id: 4, name: "DX推進" },
+		{ value: 1, label: "人事部" },
+		{ value: 2, label: "総務部" },
+		{ value: 3, label: "開発センター" },
+		{ value: 4, label: "DX推進" },
 	];
 	const positions = [
-		{ id: 1, name: "Sグレード" },
-		{ id: 2, name: "Mグレード" },
+		{ value: 1, label: "Sグレード" },
+		{ value: 2, label: "Mグレード" },
 	];
 
 	return (
@@ -57,7 +60,9 @@ export const ProfileForm = () => {
 						選択してください
 					</Select.Item>
 					{years.map((year) => (
-						<Select.Item key={year} value={year}>{`${year}年目`}</Select.Item>
+						<Select.Item key={year.value} value={year.value}>
+							{year.label}
+						</Select.Item>
 					))}
 				</Select>
 				<ErrorText>{fields.years.errors}</ErrorText>
@@ -66,29 +71,44 @@ export const ProfileForm = () => {
 						選択してください
 					</Select.Item>
 					{departments.map((department) => (
-						<Select.Item key={department.id} value={department.id}>
-							{department.name}
+						<Select.Item key={department.value} value={department.value}>
+							{department.label}
 						</Select.Item>
 					))}
 				</Select>
 				<ErrorText>{fields.department.errors}</ErrorText>
-				<RadioGroup
+				{/* <RadioGroup
 					inputProps={getInputProps(fields.position, { type: "text" })}
 				>
 					{(name, defaultValue) =>
 						positions.map((position) => (
-							<label className="flex items-center gap-1" key={position.id}>
+							<label className="flex items-center gap-1" key={position.value}>
 								<input
 									type="radio"
 									name={name}
-									value={position.id}
-									defaultChecked={Number(defaultValue) === position.id}
+									value={position.value}
+									defaultChecked={Number(defaultValue) === position.value}
 								/>
-								<span>{position.name}</span>
+								<span>{position.label}</span>
 							</label>
 						))
 					}
-				</RadioGroup>
+				</RadioGroup> */}
+				<div className="flex gap-2">
+					{positions.map((position) => (
+						<label className="flex items-center gap-1" key={position.value}>
+							<input
+								type="radio"
+								name={fields.position.name}
+								value={position.value}
+								defaultChecked={
+									Number(fields.position.initialValue) === position.value
+								}
+							/>
+							<span>{position.label}</span>
+						</label>
+					))}
+				</div>
 
 				<ErrorText>{fields.position.errors}</ErrorText>
 				<SubmitButton>登録</SubmitButton>
