@@ -1,7 +1,6 @@
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import Session, SQLModel, create_engine
 
 from app.shared.env import DB
-
 
 engine = create_engine(
     f"postgresql://{DB.USER}:{DB.PASSWORD}@{DB.HOST}:{DB.PORT}/{DB.NAME}",

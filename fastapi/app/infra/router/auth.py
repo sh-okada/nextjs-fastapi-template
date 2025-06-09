@@ -1,13 +1,12 @@
-from typing import Annotated
 import uuid
+from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import select
 
 from app.depends import SessionDep
-from app.infra import responses
-from app.infra import requests
+from app.infra import requests, responses
 from app.infra.db import models
 from app.shared import password
 from app.shared.jwt import create_access_token
@@ -16,7 +15,7 @@ auth_router = APIRouter(prefix="/auth", tags=["auth"])
 
 
 @auth_router.post("/login")
-async def login(
+def login(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()], session: SessionDep
 ):
     statement = select(models.User).where(
@@ -44,7 +43,7 @@ async def login(
 
 
 @auth_router.post("/signup")
-async def signUp(form_data: requests.SignUpRequest, session: SessionDep):
+def signUp(form_data: requests.SignUpRequest, session: SessionDep):
     statement = select(models.User).where(
         models.User.username == form_data.username,
     )

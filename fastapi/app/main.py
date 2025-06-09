@@ -1,6 +1,7 @@
 from contextlib import asynccontextmanager
 
 from fastapi import APIRouter, FastAPI
+
 from app.infra.db.db import create_db_and_tables
 from app.infra.router.auth import auth_router
 from app.infra.router.users import users_router
