@@ -29,9 +29,11 @@ export const signUpSchema = z.object({
 });
 
 export const profileSchema = z.object({
-	joiningDate: z.date().refine(isPastOrToday, {
-		message: message.isPastOrToday("入社日"),
-	}),
+	joiningDate: z
+		.date({ message: message.required("入社日") })
+		.refine(isPastOrToday, {
+			message: message.isPastOrToday("入社日"),
+		}),
 	years: z.string({ message: message.required("入社年数") }),
 	department: z.string({ message: message.required("部署") }),
 	position: z.string({ message: message.required("役職") }),

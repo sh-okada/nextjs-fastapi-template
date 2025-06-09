@@ -15,7 +15,6 @@ import {
 	useForm,
 } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import dayjs from "dayjs";
 import { useActionState } from "react";
 
 export const ProfileForm = () => {
@@ -26,9 +25,6 @@ export const ProfileForm = () => {
 			return parseWithZod(formData, { schema: profileSchema });
 		},
 		shouldValidate: "onBlur",
-		defaultValue: {
-			joiningDate: dayjs().format("YYYY-MM-DD"),
-		},
 	});
 	const years = Array.from({ length: 40 }, (_, i) => ({
 		value: (i + 1).toString(),
