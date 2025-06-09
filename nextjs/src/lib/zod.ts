@@ -18,15 +18,21 @@ export const loginSchema = z.object({
 });
 
 export const signUpSchema = z.object({
-	username: z.string().min(2).max(8),
-	password: z.string().min(8).max(100),
+	username: z
+		.string({ message: message.required("ユーザー名") })
+		.min(2)
+		.max(8),
+	password: z
+		.string({ message: message.required("パスワード") })
+		.min(8)
+		.max(100),
 });
 
 export const profileSchema = z.object({
 	joiningDate: z.date().refine(isPastOrToday, {
 		message: message.isPastOrToday("入社日"),
 	}),
-	years: z.number().min(1, message.required("入社年数")),
-	department: z.number().min(1, message.required("部署名")),
-	position: z.number().min(1, message.required("役職")),
+	years: z.string({ message: message.required("入社年数") }),
+	department: z.string({ message: message.required("部署") }),
+	position: z.string({ message: message.required("役職") }),
 });
