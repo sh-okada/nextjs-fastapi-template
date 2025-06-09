@@ -4,9 +4,9 @@ RUN npm install -g @biomejs/biome
 
 WORKDIR /workspace/nextjs
 
-COPY ./nextjs/package*.json ./
+COPY ./nextjs/package.json ./
 
-RUN npm ci
+RUN npm install
 
 COPY ./nextjs/src ./src
 COPY ./nextjs/public ./public
