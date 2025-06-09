@@ -1,9 +1,12 @@
 "use server";
 
+import { postProfile as postProfileApi } from "@/api/profile/profile";
+import { paths } from "@/config/paths";
 import { isUnAuthorizedError } from "@/lib/axios";
 import { profileSchema } from "@/lib/zod";
 import { parseWithZod } from "@conform-to/zod";
 import { AuthError } from "next-auth";
+import { redirect } from "next/navigation";
 
 export async function postProfile(_prevState: unknown, formData: FormData) {
 	const submission = parseWithZod(formData, {
@@ -13,15 +16,7 @@ export async function postProfile(_prevState: unknown, formData: FormData) {
 	if (submission.status !== "success") {
 		return submission.reply();
 	}
+	await postProfileApi(submission.value);
 
-	try {
-		await postProfile(Object.fromEntries(formData));
-	} catch (error) {
-		if (error instanceof AuthError && isUnAuthorizedError(error.cause?.err)) {
-			return submission.reply({
-				formErrors: ["ユーザ名またはパスワードが間違っています"],
-			});
-		}
-		throw error;
-	}
+	return redirect(paths.home.getHref());
 }
