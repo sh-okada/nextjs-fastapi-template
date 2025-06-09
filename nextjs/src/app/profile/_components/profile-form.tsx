@@ -5,7 +5,7 @@ import { ErrorText } from "@/components/core/error-text";
 import { Input } from "@/components/core/input";
 import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
-import { Select } from "@/components/core/select";
+import { Select, type SelectItems } from "@/components/core/select";
 import { SubmitButton } from "@/components/core/submit-button";
 import { profileSchema } from "@/lib/zod";
 import {
@@ -17,7 +17,17 @@ import {
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";
 
-export const ProfileForm = () => {
+export type ProfileFormProps = {
+	yearItems: SelectItems;
+	departmentItems: SelectItems;
+	gradeItems: SelectItems;
+};
+
+export const ProfileForm = ({
+	yearItems,
+	departmentItems,
+	gradeItems,
+}: ProfileFormProps) => {
 	const [lastResult, action] = useActionState(login, null);
 	const [form, fields] = useForm({
 		lastResult,
