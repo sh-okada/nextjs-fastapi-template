@@ -36,5 +36,5 @@ export const profileSchema = z.object({
 		}),
 	years: z.string({ message: message.required("入社年数") }),
 	department: z.string({ message: message.required("部署") }),
-	position: z.string({ message: message.required("役職") }),
+	grade: z.string({ message: message.required("グレード") }),
 });

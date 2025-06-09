@@ -36,26 +36,6 @@ export const ProfileForm = ({
 		},
 		shouldValidate: "onBlur",
 	});
-	const years = Array.from({ length: 40 }, (_, i) => ({
-		value: (i + 1).toString(),
-		label: `${i + 1}年目`,
-	}));
-	const departments = [
-		{ value: "1", label: "人事部" },
-		{ value: "2", label: "総務部" },
-		{ value: "3", label: "開発センター" },
-		{ value: "4", label: "DX推進" },
-	];
-	const positions = [
-		{ value: "1", label: "S1グレード" },
-		{ value: "2", label: "S2グレード" },
-		{ value: "3", label: "S3グレード" },
-		{ value: "4", label: "S4グレード" },
-		{ value: "5", label: "M1グレード" },
-		{ value: "6", label: "M2グレード" },
-		{ value: "7", label: "M3グレード" },
-		{ value: "8", label: "M4グレード" },
-	];
 
 	return (
 		<form {...getFormProps(form)} action={action}>
@@ -69,7 +49,7 @@ export const ProfileForm = ({
 					<Select.Item value="" hidden>
 						選択してください
 					</Select.Item>
-					{years.map((year) => (
+					{yearItems.map((year) => (
 						<Select.Item key={year.value} value={year.value}>
 							{year.label}
 						</Select.Item>
@@ -80,7 +60,7 @@ export const ProfileForm = ({
 					<Select.Item value="" hidden>
 						選択してください
 					</Select.Item>
-					{departments.map((department) => (
+					{departmentItems.map((department) => (
 						<Select.Item key={department.value} value={department.value}>
 							{department.label}
 						</Select.Item>
@@ -88,19 +68,19 @@ export const ProfileForm = ({
 				</Select>
 				<ErrorText>{fields.department.errors}</ErrorText>
 				<RadioGroup className="sm: flex-col md:flex-row">
-					{positions.map((position) => (
+					{gradeItems.map((grade) => (
 						<Radio
-							key={position.value}
-							name={fields.position.name}
-							value={position.value}
-							defaultChecked={fields.position.initialValue === position.value}
+							key={grade.value}
+							name={fields.grade.name}
+							value={grade.value}
+							defaultChecked={fields.grade.initialValue === grade.value}
 						>
-							{position.label}
+							{grade.label}
 						</Radio>
 					))}
 				</RadioGroup>
 
-				<ErrorText>{fields.position.errors}</ErrorText>
+				<ErrorText>{fields.grade.errors}</ErrorText>
 				<SubmitButton>登録</SubmitButton>
 			</div>
 		</form>

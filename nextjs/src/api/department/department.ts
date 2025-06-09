@@ -1,6 +1,4 @@
 import { axiosInstance } from "@/lib/axios";
-import type { loginSchema } from "@/lib/zod";
-import type { z } from "zod";
 
 export type DepartmentResponse = {
 	id: number;
