@@ -1,4 +1,4 @@
-import { SubmitButton } from "@/components/core/submit-button";
+import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { auth, signOut } from "@/lib/auth";
 
 export default async function Page() {

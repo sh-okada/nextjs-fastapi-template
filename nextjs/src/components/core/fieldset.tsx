@@ -5,7 +5,7 @@ export type FieldsetProps = ComponentProps<"fieldset">;
 
 export const Fieldset: FunctionComponent<FieldsetProps> & {
 	Legend: typeof Legend;
-} = ({ ...props }: FieldsetProps) => {
+} = (props: FieldsetProps) => {
 	return <fieldset {...props} />;
 };
 

@@ -3,7 +3,7 @@
 import { login } from "@/app/login/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Input } from "@/components/core/input";
-import { SubmitButton } from "@/components/core/submit-button";
+import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";

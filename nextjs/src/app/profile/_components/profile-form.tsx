@@ -10,7 +10,7 @@ import { Input } from "@/components/core/input";
 import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
 import { Select, type SelectItems } from "@/components/core/select";
-import { SubmitButton } from "@/components/core/submit-button";
+import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { profileSchema } from "@/lib/zod";
 import {
 	getFormProps,
