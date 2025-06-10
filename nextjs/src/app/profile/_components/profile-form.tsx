@@ -2,6 +2,8 @@
 
 import { login } from "@/app/login/action";
 import { ErrorText } from "@/components/core/error-text";
+import { Field } from "@/components/core/field";
+import { Fieldset } from "@/components/core/fieldset";
 import { Input } from "@/components/core/input";
 import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
@@ -39,48 +41,59 @@ export const ProfileForm = ({
 
 	return (
 		<form {...getFormProps(form)} action={action}>
-			<div className="flex flex-col">
-				<Input
-					{...getInputProps(fields.joiningDate, { type: "date" })}
-					key={fields.joiningDate.key}
-				/>
-				<ErrorText>{fields.joiningDate.errors}</ErrorText>
-				<Select {...getSelectProps(fields.years)}>
-					<Select.Item value="" hidden>
-						選択してください
-					</Select.Item>
-					{yearItems.map((year) => (
-						<Select.Item key={year.value} value={year.value}>
-							{year.label}
+			<div className="flex flex-col gap-2">
+				<Fieldset>
+					<Fieldset.Legend>入社日を選択</Fieldset.Legend>
+					<Input
+						{...getInputProps(fields.joiningDate, { type: "date" })}
+						key={fields.joiningDate.key}
+					/>
+					<ErrorText>{fields.joiningDate.errors}</ErrorText>
+				</Fieldset>
+				<Field>
+					<Field.Label htmlFor={fields.years.id}>入社年数を選択</Field.Label>
+					<Select {...getSelectProps(fields.years)}>
+						<Select.Item value="" hidden>
+							選択してください
 						</Select.Item>
-					))}
-				</Select>
-				<ErrorText>{fields.years.errors}</ErrorText>
-				<Select {...getSelectProps(fields.department)}>
-					<Select.Item value="" hidden>
-						選択してください
-					</Select.Item>
-					{departmentItems.map((department) => (
-						<Select.Item key={department.value} value={department.value}>
-							{department.label}
+						{yearItems.map((year) => (
+							<Select.Item key={year.value} value={year.value}>
+								{year.label}
+							</Select.Item>
+						))}
+					</Select>
+					<ErrorText>{fields.years.errors}</ErrorText>
+				</Field>
+				<Field>
+					<Field.Label htmlFor={fields.department.id}>部署を選択</Field.Label>
+					<Select {...getSelectProps(fields.department)}>
+						<Select.Item value="" hidden>
+							選択してください
 						</Select.Item>
-					))}
-				</Select>
-				<ErrorText>{fields.department.errors}</ErrorText>
-				<RadioGroup className="sm: flex-col md:flex-row">
-					{gradeItems.map((grade) => (
-						<Radio
-							key={grade.value}
-							name={fields.grade.name}
-							value={grade.value}
-							defaultChecked={fields.grade.initialValue === grade.value}
-						>
-							{grade.label}
-						</Radio>
-					))}
-				</RadioGroup>
-
-				<ErrorText>{fields.grade.errors}</ErrorText>
+						{departmentItems.map((department) => (
+							<Select.Item key={department.value} value={department.value}>
+								{department.label}
+							</Select.Item>
+						))}
+					</Select>
+					<ErrorText>{fields.department.errors}</ErrorText>
+				</Field>
+				<Fieldset>
+					<Fieldset.Legend>グレードを選択</Fieldset.Legend>
+					<RadioGroup className="flex-col md:flex-row flex-wrap gap-2">
+						{gradeItems.map((grade) => (
+							<Radio
+								key={grade.value}
+								name={fields.grade.name}
+								value={grade.value}
+								defaultChecked={fields.grade.initialValue === grade.value}
+							>
+								{grade.label}
+							</Radio>
+						))}
+					</RadioGroup>
+					<ErrorText>{fields.grade.errors}</ErrorText>
+				</Fieldset>
 				<SubmitButton>登録</SubmitButton>
 			</div>
 		</form>
