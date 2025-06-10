@@ -4,6 +4,10 @@ import { z } from "zod";
 const message = {
 	required: (label: string) => `${label}は必須項目です`,
 	isPastOrToday: (label: string) => `${label}は未来の日付を選択できません`,
+	min: (label: string, min: number) =>
+		`${label}は${min}文字以上で入力してください`,
+	max: (label: string, max: number) =>
+		`${label}は${max}文字以下で入力してください`,
 } as const;
 
 const isPastOrToday = (date: Date) => {
@@ -13,19 +17,23 @@ const isPastOrToday = (date: Date) => {
 };
 
 export const loginSchema = z.object({
-	username: z.string().max(50),
-	password: z.string().max(100),
+	username: z.string({ message: message.required("ユーザー名") }).max(50, {
+		message: message.max("ユーザー名", 50),
+	}),
+	password: z.string({ message: message.required("パスワード") }).max(100, {
+		message: message.max("パスワード", 100),
+	}),
 });
 
 export const signUpSchema = z.object({
 	username: z
 		.string({ message: message.required("ユーザー名") })
-		.min(2)
-		.max(8),
+		.min(2, { message: message.min("ユーザー名", 2) })
+		.max(8, { message: message.max("ユーザー名", 8) }),
 	password: z
 		.string({ message: message.required("パスワード") })
-		.min(8)
-		.max(100),
+		.min(8, { message: message.min("パスワード", 8) })
+		.max(100, { message: message.max("パスワード", 100) }),
 });
 
 export const profileSchema = z.object({
