@@ -2,6 +2,7 @@
 
 import { login } from "@/app/login/action";
 import { postProfile } from "@/app/profile/action";
+import { DatePicker } from "@/components/core/date-picker";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Fieldset } from "@/components/core/fieldset";
@@ -45,7 +46,7 @@ export const ProfileForm = ({
 			<div className="flex flex-col gap-2">
 				<Fieldset>
 					<Fieldset.Legend>入社日を選択</Fieldset.Legend>
-					<Input
+					<DatePicker
 						{...getInputProps(fields.joiningDate, { type: "date" })}
 						key={fields.joiningDate.key}
 					/>
