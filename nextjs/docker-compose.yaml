@@ -1,0 +1,17 @@
+services:
+  nextjs:
+    container_name: nextjs
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: true
+    ports:
+      - 3000:3000
+    volumes:
+      - ../:/workspace
+      - /workspace/nextjs/node_modules
+    environment:
+      AUTH_SECRET: "cEPKRUHbWS2ylvvhPc+Mdbr1pPAmt1Ky0qxJVGdhXp0="
+      API_URL: "http://host.docker.internal:8000/api"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

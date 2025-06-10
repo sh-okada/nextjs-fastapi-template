@@ -1,6 +1,6 @@
 {
 	"name": "nextjs",
-	"dockerComposeFile": "../docker-compose.yaml",
+	"dockerComposeFile": "docker-compose.yaml",
 	"service": "nextjs",
 	"workspaceFolder": "/workspace/nextjs",
 	"forwardPorts": [3000],

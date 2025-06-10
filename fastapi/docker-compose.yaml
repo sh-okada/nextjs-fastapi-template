@@ -1,19 +1,4 @@
 services:
-  nextjs:
-    container_name: nextjs
-    build:
-      context: .
-      dockerfile: Dockerfile.frontend
-    tty: true
-    ports:
-      - 3000:3000    
-    volumes:
-      - ./nextjs:/workspace/nextjs
-      - /workspace/nextjs/node_modules
-    environment:
-      AUTH_SECRET: "cEPKRUHbWS2ylvvhPc+Mdbr1pPAmt1Ky0qxJVGdhXp0="
-      API_URL: "http://fastapi:8000/api"
-
   fastapi:
     container_name: fastapi
     build:
@@ -25,7 +10,7 @@ services:
     ports:
       - 8000:8000
     volumes:
-      - ./fastapi:/workspace/fastapi
+      - ../:/workspace
       - /workspace/fastapi/.venv
     environment:
       PYTHONDONTWRITEBYTECODE: "1"
