@@ -2,6 +2,7 @@
 
 import { signup } from "@/app/signup/action";
 import { ErrorText } from "@/components/core/error-text";
+import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
 import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { paths } from "@/config/paths";
@@ -25,16 +26,22 @@ export const SignUpForm = () => {
 		<form {...getFormProps(form)} action={action}>
 			<ErrorText>{form.errors}</ErrorText>
 			<div className="flex flex-col">
-				<Input
-					{...getInputProps(fields.username, { type: "text" })}
-					key={fields.username.key}
-				/>
-				<ErrorText>{fields.username.errors}</ErrorText>
-				<Input
-					{...getInputProps(fields.password, { type: "password" })}
-					key={fields.password.key}
-				/>
-				<ErrorText>{fields.password.errors}</ErrorText>
+				<Field>
+					<Field.Label htmlFor={fields.username.id}>ユーザー名</Field.Label>
+					<Input
+						{...getInputProps(fields.username, { type: "text" })}
+						key={fields.username.key}
+					/>
+					<ErrorText>{fields.username.errors}</ErrorText>
+				</Field>
+				<Field>
+					<Field.Label htmlFor={fields.password.id}>パスワード</Field.Label>
+					<Input
+						{...getInputProps(fields.password, { type: "password" })}
+						key={fields.password.key}
+					/>
+					<ErrorText>{fields.password.errors}</ErrorText>
+				</Field>
 				<SubmitButton>登録</SubmitButton>
 				<Link href={paths.login.getHref()}>ログインはこちら</Link>
 			</div>
