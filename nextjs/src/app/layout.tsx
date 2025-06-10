@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Noto_Sans_JP } from "next/font/google";
+
+const notoSans = Noto_Sans_JP({
+	weight: ["400", "500", "700"],
+	subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -12,7 +18,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="ja">
+		<html lang="ja" className={notoSans.className}>
 			<body>
 				<main className="max-w-3xl m-auto">{children}</main>
 			</body>
