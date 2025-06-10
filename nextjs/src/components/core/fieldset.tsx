@@ -5,8 +5,8 @@ export type FieldsetProps = ComponentProps<"fieldset">;
 
 export const Fieldset: FunctionComponent<FieldsetProps> & {
 	Legend: typeof Legend;
-} = ({ className = "", ...props }: FieldsetProps) => {
-	return <fieldset className={className} {...props} />;
+} = ({ ...props }: FieldsetProps) => {
+	return <fieldset {...props} />;
 };
 
 Fieldset.Legend = Legend;

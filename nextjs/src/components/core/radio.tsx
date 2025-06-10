@@ -1,8 +1,7 @@
-import { Input } from "@/components/core/input";
+import { Input, type InputProps } from "@/components/core/input";
 import { Label } from "@/components/core/label";
-import type { ComponentProps } from "react";
 
-export type RadioProps = ComponentProps<"input">;
+export type RadioProps = Omit<InputProps, "type">;
 
 export const Radio = ({ children, ...props }: RadioProps) => {
 	return (

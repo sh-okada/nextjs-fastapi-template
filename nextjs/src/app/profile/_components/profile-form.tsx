@@ -1,6 +1,7 @@
 "use client";
 
 import { login } from "@/app/login/action";
+import { postProfile } from "@/app/profile/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Fieldset } from "@/components/core/fieldset";
@@ -30,7 +31,7 @@ export const ProfileForm = ({
 	departmentItems,
 	gradeItems,
 }: ProfileFormProps) => {
-	const [lastResult, action] = useActionState(login, null);
+	const [lastResult, action] = useActionState(postProfile, null);
 	const [form, fields] = useForm({
 		lastResult,
 		onValidate({ formData }) {
