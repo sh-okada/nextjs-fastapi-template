@@ -15,5 +15,11 @@ export type InputProps = ComponentProps<"input"> & {
 };
 
 export const Input = ({ isError, className = "", ...rest }: InputProps) => {
-	return <input className={`${inputBaseStyle} ${className}`} {...rest} />;
+	return (
+		<input
+			className={`${inputBaseStyle} ${className}`}
+			aria-invalid={isError || undefined}
+			{...rest}
+		/>
+	);
 };

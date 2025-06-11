@@ -68,7 +68,7 @@ export const ProfileForm = ({
 				</Field>
 				<Field>
 					<Field.Label htmlFor={fields.department.id}>部署を選択</Field.Label>
-					<Select {...getSelectProps(fields.department)}>
+					<Select {...getSelectProps(fields.department)} disabled={true}>
 						<Select.Item value="" hidden>
 							選択してください
 						</Select.Item>
