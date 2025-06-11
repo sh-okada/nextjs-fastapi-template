@@ -26,7 +26,7 @@ export const LoginForm = () => {
 	return (
 		<form {...getFormProps(form)} action={action}>
 			<ErrorText>{form.errors}</ErrorText>
-			<div className="flex flex-col">
+			<div className="flex flex-col gap-2">
 				<Field>
 					<Field.Label htmlFor={fields.username.id}>ユーザー名</Field.Label>
 					<Input
@@ -46,7 +46,9 @@ export const LoginForm = () => {
 					<ErrorText>{fields.password.errors}</ErrorText>
 				</Field>
 				<SubmitButton>ログイン</SubmitButton>
-				<NextLink href={paths.signup.getHref()}>新規登録はこちら</NextLink>
+				<div className="text-right">
+					<NextLink href={paths.signup.getHref()}>新規登録はこちら</NextLink>
+				</div>
 			</div>
 		</form>
 	);
