@@ -1,7 +1,10 @@
 import { Slot } from "@/components/core/slot";
 import type { ComponentProps } from "react";
 
-const linkStyle = "text-blue-900";
+const linkStyle = `
+	text-blue-900
+	hover:underline
+`;
 
 export type LinkProps = { className?: string } & (
 	| ({ asChild?: false } & ComponentProps<"a">)

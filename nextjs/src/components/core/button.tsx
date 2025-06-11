@@ -1,7 +1,47 @@
 import type { ComponentProps } from "react";
 
-export type ButtonProps = ComponentProps<"button">;
+export type ButtonVariant = "solid" | "outline" | "text";
 
-export const Button = (props: ButtonProps) => {
-	return <button {...props} />;
+const buttonVariantStyle: { [key in ButtonVariant]: string } = {
+	solid: `
+		text-white
+		bg-blue-800
+		hover:bg-blue-900 hover:underline
+		disabled:text-gray-500 disabled:bg-gray-300
+	`,
+	outline: `
+		text-blue-900
+		border border-blue-800
+		hover:bg-blue-50 hover:underline
+	`,
+	text: `
+		underline
+		text-blue-900
+		hover:decoration-2 hover:bg-blue-50
+	`,
+};
+
+const buttonBaseStyle = `
+	cursor-pointer
+	px-4 py-2
+	rounded-md
+	focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-2
+	disabled:pointer-events-none
+`;
+
+export type ButtonProps = ComponentProps<"button"> & {
+	variant?: ButtonVariant;
+};
+
+export const Button = ({
+	variant = "solid",
+	className = "",
+	...rest
+}: ButtonProps) => {
+	return (
+		<button
+			className={`${buttonBaseStyle} ${buttonVariantStyle[variant]} ${className}`}
+			{...rest}
+		/>
+	);
 };
