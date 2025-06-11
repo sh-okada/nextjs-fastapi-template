@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/app/_components/header";
+import { Header } from "@/app/(private)/_components/header";
 import { Noto_Sans_JP } from "next/font/google";
 
 const notoSans = Noto_Sans_JP({
@@ -20,10 +20,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="ja" className={notoSans.className}>
-			<body>
-				<Header />
-				<main className="max-w-3xl m-auto">{children}</main>
-			</body>
+			<body>{children}</body>
 		</html>
 	);
 }

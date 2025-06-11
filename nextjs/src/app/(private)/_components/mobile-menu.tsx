@@ -1,11 +1,11 @@
 "use client";
 
 import { Button } from "@/components/core/button";
-import { type ReactNode, useRef } from "react";
+import { type ReactNode, type RefObject, useRef } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
 
 export type MobileMenuProps = {
-	children?: ReactNode;
+	children: (drawerRef: RefObject<HTMLDialogElement | null>) => ReactNode;
 };
 
 export const MobileMenu = ({ children }: MobileMenuProps) => {
@@ -35,7 +35,7 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
 						<FaXmark />
 					</Button>
 				</div>
-				{children}
+				{children(drawerRef)}
 			</dialog>
 		</>
 	);

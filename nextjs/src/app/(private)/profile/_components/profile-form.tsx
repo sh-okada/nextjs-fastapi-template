@@ -1,6 +1,6 @@
 "use client";
 
-import { postProfile } from "@/app/profile/action";
+import { postProfile } from "@/app/(private)/profile/action";
 import { DatePicker } from "@/components/core/date-picker";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";

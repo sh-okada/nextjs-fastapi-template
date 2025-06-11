@@ -1,23 +1,23 @@
 "use client";
 
-import { signup } from "@/app/signup/action";
+import { login } from "@/app/(public)/login/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
 import { NextLink } from "@/components/ui-parts/next-link";
 import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { paths } from "@/config/paths";
-import { signUpSchema } from "@/lib/zod";
+import { loginSchema } from "@/lib/zod";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";
 
-export const SignUpForm = () => {
-	const [lastResult, action] = useActionState(signup, null);
+export const LoginForm = () => {
+	const [lastResult, action] = useActionState(login, null);
 	const [form, fields] = useForm({
 		lastResult,
 		onValidate({ formData }) {
-			return parseWithZod(formData, { schema: signUpSchema });
+			return parseWithZod(formData, { schema: loginSchema });
 		},
 		shouldValidate: "onBlur",
 	});
@@ -44,9 +44,9 @@ export const SignUpForm = () => {
 					/>
 					<ErrorText>{fields.password.errors}</ErrorText>
 				</Field>
-				<SubmitButton>登録</SubmitButton>
+				<SubmitButton>ログイン</SubmitButton>
 				<div className="text-right">
-					<NextLink href={paths.login.getHref()}>ログインはこちら</NextLink>
+					<NextLink href={paths.signup.getHref()}>新規登録はこちら</NextLink>
 				</div>
 			</div>
 		</form>
