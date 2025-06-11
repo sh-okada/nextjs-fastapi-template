@@ -36,13 +36,12 @@ export type ButtonProps = ComponentProps<"button"> & {
 };
 
 export const Button = ({
-	variant = "text",
+	variant = "solid",
 	className = "",
 	...rest
 }: ButtonProps) => {
 	return (
 		<button
-			disabled
 			className={`${buttonBaseStyle} ${buttonVariantStyle[variant]} ${className}`}
 			{...rest}
 		/>

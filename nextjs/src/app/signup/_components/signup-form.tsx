@@ -4,7 +4,6 @@ import { signup } from "@/app/signup/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
-import { Link } from "@/components/core/link";
 import { NextLink } from "@/components/ui-parts/next-link";
 import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { paths } from "@/config/paths";
@@ -32,6 +31,7 @@ export const SignUpForm = () => {
 					<Input
 						{...getInputProps(fields.username, { type: "text" })}
 						key={fields.username.key}
+						isError={Boolean(fields.username.errors)}
 					/>
 					<ErrorText>{fields.username.errors}</ErrorText>
 				</Field>
@@ -40,6 +40,7 @@ export const SignUpForm = () => {
 					<Input
 						{...getInputProps(fields.password, { type: "password" })}
 						key={fields.password.key}
+						isError={Boolean(fields.password.errors)}
 					/>
 					<ErrorText>{fields.password.errors}</ErrorText>
 				</Field>
