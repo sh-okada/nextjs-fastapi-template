@@ -3,7 +3,10 @@ import type { ComponentProps } from "react";
 
 const linkStyle = `
 	text-blue-900
-	hover:underline
+	rounded-md
+	underline
+	hover:decoration-2
+	focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-2
 `;
 
 export type LinkProps = { className?: string } & (
