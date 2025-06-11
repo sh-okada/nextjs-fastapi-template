@@ -10,7 +10,6 @@ import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
-import Link from "next/link";
 import { useActionState } from "react";
 
 export const LoginForm = () => {

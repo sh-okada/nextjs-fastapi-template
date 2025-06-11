@@ -1,7 +1,17 @@
 import { Input, type InputProps } from "@/components/core/input";
 
+const datePickerBaseStyle = `
+	w-full
+`;
+
 export type DatePickerProps = Omit<InputProps, "type">;
 
-export const DatePicker = (props: DatePickerProps) => {
-	return <Input {...props} type="date" />;
+export const DatePicker = ({ className = "", ...rest }: DatePickerProps) => {
+	return (
+		<Input
+			className={`${datePickerBaseStyle} ${className}`}
+			{...rest}
+			type="date"
+		/>
+	);
 };
