@@ -11,6 +11,10 @@ const paths = {
 		path: "/signup",
 		getHref: () => "/signup",
 	},
+	profile: {
+		path: "/profile",
+		getHref: () => "/profile",
+	},
 } as const;
 
 export { paths };

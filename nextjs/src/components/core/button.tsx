@@ -1,3 +1,4 @@
+import { Slot } from "@/components/core/slot";
 import type { ComponentProps } from "react";
 
 export type ButtonVariant = "solid" | "outline" | "text";
@@ -31,19 +32,35 @@ const buttonBaseStyle = `
 	disabled:pointer-events-none
 `;
 
-export type ButtonProps = ComponentProps<"button"> & {
-	variant?: ButtonVariant;
-};
+export type ButtonProps = { className?: string; variant: ButtonVariant } & (
+	| ({ asChild?: false } & ComponentProps<"button">)
+	| { asChild: true; children: React.ReactNode }
+);
 
 export const Button = ({
 	variant = "solid",
 	className = "",
+	asChild,
+	children,
 	...rest
 }: ButtonProps) => {
+	if (asChild) {
+		return (
+			<Slot
+				className={`${buttonBaseStyle} ${buttonVariantStyle[variant]} ${className}`}
+				{...rest}
+			>
+				{children}
+			</Slot>
+		);
+	}
+
 	return (
 		<button
 			className={`${buttonBaseStyle} ${buttonVariantStyle[variant]} ${className}`}
 			{...rest}
-		/>
+		>
+			{children}
+		</button>
 	);
 };
