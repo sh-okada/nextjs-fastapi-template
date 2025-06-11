@@ -13,17 +13,19 @@ const buttonVariantStyle: { [key in ButtonVariant]: string } = {
 		text-blue-900
 		border border-blue-800
 		hover:bg-blue-50 hover:underline
+		disabled:text-gray-500  disabled:border-gray-300
 	`,
 	text: `
 		underline
 		text-blue-900
 		hover:decoration-2 hover:bg-blue-50
+		disabled:text-gray-500
 	`,
 };
 
 const buttonBaseStyle = `
 	cursor-pointer
-	px-4 py-2
+	px-4 py-3
 	rounded-md
 	focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-2
 	disabled:pointer-events-none
@@ -34,12 +36,13 @@ export type ButtonProps = ComponentProps<"button"> & {
 };
 
 export const Button = ({
-	variant = "solid",
+	variant = "text",
 	className = "",
 	...rest
 }: ButtonProps) => {
 	return (
 		<button
+			disabled
 			className={`${buttonBaseStyle} ${buttonVariantStyle[variant]} ${className}`}
 			{...rest}
 		/>
