@@ -32,7 +32,7 @@ const buttonBaseStyle = `
 	disabled:pointer-events-none
 `;
 
-export type ButtonProps = { className?: string; variant: ButtonVariant } & (
+export type ButtonProps = { className?: string; variant?: ButtonVariant } & (
 	| ({ asChild?: false } & ComponentProps<"button">)
 	| { asChild: true; children: React.ReactNode }
 );

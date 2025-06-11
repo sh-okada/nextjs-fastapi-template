@@ -1,3 +1,4 @@
+import time
 from typing import List
 
 from fastapi import APIRouter
@@ -12,4 +13,5 @@ departments_router = APIRouter(prefix="/departments", tags=["departments"])
 def get_departments(
     department_query_service: DepartmentQueryServiceDep,
 ):
+    time.sleep(1)
     return department_query_service.get_departments()

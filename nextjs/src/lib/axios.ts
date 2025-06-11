@@ -24,9 +24,7 @@ axiosInstance.interceptors.request.use(async (config) => {
 
 axiosInstance.interceptors.response.use((response) => {
 	if (response.data) {
-		console.log(response.data);
 		response.data = camelcaseKeys(response.data, { deep: true });
-		console.log(response.data);
 	}
 
 	return response;

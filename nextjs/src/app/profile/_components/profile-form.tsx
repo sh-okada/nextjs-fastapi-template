@@ -1,12 +1,10 @@
 "use client";
 
-import { login } from "@/app/login/action";
 import { postProfile } from "@/app/profile/action";
 import { DatePicker } from "@/components/core/date-picker";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Fieldset } from "@/components/core/fieldset";
-import { Input } from "@/components/core/input";
 import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
 import { Select, type SelectItems } from "@/components/core/select";

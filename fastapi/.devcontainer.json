@@ -1,6 +1,6 @@
 {
   "name": "fastapi",
-  "dockerComposeFile": "../docker-compose.yaml",
+  "dockerComposeFile": "docker-compose.yaml",
   "service": "fastapi",
   "workspaceFolder": "/workspace/fastapi",
   "forwardPorts": [8000],
