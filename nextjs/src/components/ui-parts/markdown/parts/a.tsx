@@ -1,8 +1,8 @@
 import { Link } from "@/components/core/link";
 import type { ComponentProps } from "react";
 
-type ATagProps = Omit<ComponentProps<"a">, "target" | "rel">;
+type AProps = Omit<ComponentProps<"a">, "target" | "rel">;
 
-export const ATag = (props: ATagProps) => {
+export const A = (props: AProps) => {
 	return <Link target="_blank" rel="noopener noreferrer" {...props} />;
 };
