@@ -1,4 +1,4 @@
-import { SubmitButton } from "@/components/ui-parts/submit-button";
+import { Button } from "@/components/core/button";
 import { auth, signOut } from "@/lib/auth";
 
 export const LogoutButton = async () => {
@@ -11,9 +11,9 @@ export const LogoutButton = async () => {
         await signOut();
       }}
     >
-      <SubmitButton className="w-full" variant="solid">
+      <Button className="w-full" variant="solid" type="submit">
         ログアウト
-      </SubmitButton>
+      </Button>
     </form>
   ) : null;
 };

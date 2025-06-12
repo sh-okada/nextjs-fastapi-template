@@ -31,7 +31,6 @@ export const SignUpForm = () => {
           <Input
             {...getInputProps(fields.username, { type: "text" })}
             key={fields.username.key}
-            isError={Boolean(fields.username.errors)}
           />
           <ErrorText>{fields.username.errors}</ErrorText>
         </Field>
@@ -40,7 +39,6 @@ export const SignUpForm = () => {
           <Input
             {...getInputProps(fields.password, { type: "password" })}
             key={fields.password.key}
-            isError={Boolean(fields.password.errors)}
           />
           <ErrorText>{fields.password.errors}</ErrorText>
         </Field>
