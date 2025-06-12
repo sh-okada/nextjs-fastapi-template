@@ -5,7 +5,8 @@ import { Button } from "@/components/core/button";
 import { Container } from "@/components/ui-parts/container";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
-import type { ReactNode } from "react";
+import { usePathname } from "next/navigation";
+import { type ReactNode, useEffect } from "react";
 
 export type MobileMenuProps = {
 	children?: ReactNode;
@@ -24,24 +25,28 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
 			url: paths.profile.getHref(),
 		},
 	];
+	const pathname = usePathname();
 
 	return (
 		<FullDrawer>
-			{(drawerRef) => (
-				<Container className="flex flex-col gap-4">
-					{menuItems.map((menuItem) => (
-						<Button key={menuItem.key} variant="text" asChild>
-							<InternalLink
-								href={menuItem.url}
-								onClick={() => drawerRef.current?.close()}
-							>
-								{menuItem.label}
-							</InternalLink>
-						</Button>
-					))}
-					{children}
-				</Container>
-			)}
+			{(drawerRef) => {
+				// biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+				useEffect(() => {
+					drawerRef.current?.close();
+				}, [pathname]);
+				return (
+					<Container className="flex flex-col gap-4">
+						{menuItems.map((menuItem) => (
+							<Button key={menuItem.key} variant="text" asChild>
+								<InternalLink href={menuItem.url}>
+									{menuItem.label}
+								</InternalLink>
+							</Button>
+						))}
+						{children}
+					</Container>
+				);
+			}}
 		</FullDrawer>
 	);
 };

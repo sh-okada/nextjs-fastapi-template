@@ -1,12 +1,16 @@
-import { Legend } from "@/components/core/legend";
+import { Legend, type LegendProps } from "@/components/core/legend";
 import type { ComponentProps, FunctionComponent } from "react";
 
 export type FieldsetProps = ComponentProps<"fieldset">;
 
-export const Fieldset: FunctionComponent<FieldsetProps> & {
-	Legend: typeof Legend;
-} = (props: FieldsetProps) => {
-	return <fieldset {...props} />;
+const FieldsetLegend = ({ className = "", ...rest }: LegendProps) => {
+	return <Legend className={`mb-2 ${className}`} {...rest} />;
 };
 
-Fieldset.Legend = Legend;
+export const Fieldset: FunctionComponent<FieldsetProps> & {
+	Legend: typeof FieldsetLegend;
+} = ({ className = "", ...rest }: FieldsetProps) => {
+	return <fieldset className={`flex flex-col gap-2 ${className}`} {...rest} />;
+};
+
+Fieldset.Legend = FieldsetLegend;
