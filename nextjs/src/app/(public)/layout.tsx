@@ -1,9 +1,9 @@
 import { Container } from "@/components/ui-parts/container";
 
 export default function PublicLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return <Container>{children}</Container>;
+  return <Container>{children}</Container>;
 }

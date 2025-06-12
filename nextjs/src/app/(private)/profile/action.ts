@@ -7,14 +7,14 @@ import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
 
 export async function postProfile(_prevState: unknown, formData: FormData) {
-	const submission = parseWithZod(formData, {
-		schema: profileSchema,
-	});
+  const submission = parseWithZod(formData, {
+    schema: profileSchema,
+  });
 
-	if (submission.status !== "success") {
-		return submission.reply();
-	}
-	await postProfileApi(submission.value);
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
+  await postProfileApi(submission.value);
 
-	return redirect(paths.home.getHref());
+  return redirect(paths.home.getHref());
 }

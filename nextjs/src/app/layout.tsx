@@ -3,23 +3,23 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 
 const notoSans = Noto_Sans_JP({
-	weight: ["400", "500", "700"],
-	subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
-	title: "Next.js + FastAPI サンプルアプリ",
-	description: "Next.js + FastAPI サンプルアプリです。",
+  title: "Next.js + FastAPI サンプルアプリ",
+  description: "Next.js + FastAPI サンプルアプリです。",
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="ja" className={notoSans.className}>
-			<body>{children}</body>
-		</html>
-	);
+  return (
+    <html lang="ja" className={notoSans.className}>
+      <body>{children}</body>
+    </html>
+  );
 }
