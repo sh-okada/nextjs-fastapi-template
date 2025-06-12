@@ -3,11 +3,11 @@ import type { LinkProps } from "next/link";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-export type NextLinkProps = LinkProps & {
+export type InternalLinkProps = LinkProps & {
 	children?: ReactNode;
 };
 
-export const NextLink = ({ children, ...rest }: NextLinkProps) => {
+export const InternalLink = ({ children, ...rest }: InternalLinkProps) => {
 	return (
 		<CoreLink asChild>
 			<Link {...rest}>{children}</Link>

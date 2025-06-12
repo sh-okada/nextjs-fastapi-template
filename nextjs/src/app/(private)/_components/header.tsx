@@ -1,9 +1,5 @@
-"use client";
-
+import { LogoutButton } from "@/app/(private)/_components/logout-button";
 import { MobileMenu } from "@/app/(private)/_components/mobile-menu";
-import { Button } from "@/components/core/button";
-import { NextLink } from "@/components/ui-parts/next-link";
-import { paths } from "@/config/paths";
 
 export const Header = () => {
 	return (
@@ -12,27 +8,7 @@ export const Header = () => {
 				<h1>サンプルアプリ</h1>
 			</div>
 			<MobileMenu>
-				{(drawerRef) => (
-					<div className="flex flex-col gap-4 max-w-3xl m-auto">
-						<Button variant="text" asChild>
-							<NextLink
-								href={paths.home.getHref()}
-								onClick={() => drawerRef.current?.close()}
-							>
-								ホーム
-							</NextLink>
-						</Button>
-						<Button variant="text" asChild>
-							<NextLink
-								href={paths.profile.getHref()}
-								onClick={() => drawerRef.current?.close()}
-							>
-								プロフィール
-							</NextLink>
-						</Button>
-						{/* <LogoutButton /> */}
-					</div>
-				)}
+				<LogoutButton />
 			</MobileMenu>
 		</header>
 	);

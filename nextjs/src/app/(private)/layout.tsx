@@ -1,4 +1,5 @@
 import { Header } from "@/app/(private)/_components/header";
+import { Container } from "@/components/ui-parts/container";
 
 export default function PrivateLayout({
 	children,
@@ -8,7 +9,7 @@ export default function PrivateLayout({
 	return (
 		<>
 			<Header />
-			<main className="max-w-3xl m-auto">{children}</main>
+			<Container>{children}</Container>
 		</>
 	);
 }

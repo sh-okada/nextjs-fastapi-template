@@ -4,7 +4,7 @@ import { login } from "@/app/(public)/login/action";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
-import { NextLink } from "@/components/ui-parts/next-link";
+import { InternalLink } from "@/components/ui-parts/internal-link";
 import { SubmitButton } from "@/components/ui-parts/submit-button";
 import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod";
@@ -46,7 +46,9 @@ export const LoginForm = () => {
 				</Field>
 				<SubmitButton>ログイン</SubmitButton>
 				<div className="text-right">
-					<NextLink href={paths.signup.getHref()}>新規登録はこちら</NextLink>
+					<InternalLink href={paths.signup.getHref()}>
+						新規登録はこちら
+					</InternalLink>
 				</div>
 			</div>
 		</form>

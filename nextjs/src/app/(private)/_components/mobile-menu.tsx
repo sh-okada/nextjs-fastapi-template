@@ -1,42 +1,47 @@
 "use client";
 
+import { FullDrawer } from "@/app/(private)/_components/full-drawer";
 import { Button } from "@/components/core/button";
-import { type ReactNode, type RefObject, useRef } from "react";
-import { FaBars, FaXmark } from "react-icons/fa6";
+import { Container } from "@/components/ui-parts/container";
+import { InternalLink } from "@/components/ui-parts/internal-link";
+import { paths } from "@/config/paths";
+import type { ReactNode } from "react";
 
 export type MobileMenuProps = {
-	children: (drawerRef: RefObject<HTMLDialogElement | null>) => ReactNode;
+	children?: ReactNode;
 };
 
 export const MobileMenu = ({ children }: MobileMenuProps) => {
-	const drawerRef = useRef<HTMLDialogElement>(null);
+	const menuItems = [
+		{
+			key: 1,
+			label: "サンプルアプリについて",
+			url: paths.home.getHref(),
+		},
+		{
+			key: 2,
+			label: "プロフィール",
+			url: paths.profile.getHref(),
+		},
+	];
 
 	return (
-		<>
-			<div className="p-4">
-				<Button
-					variant="text"
-					type="button"
-					onClick={() => drawerRef.current?.showModal()}
-				>
-					<FaBars />
-				</Button>
-			</div>
-			<dialog
-				className="m-[unset] max-w-[unset] max-h-[unset] w-full h-dvh bg-white"
-				ref={drawerRef}
-			>
-				<div className="flex justify-end p-4">
-					<Button
-						variant="text"
-						type="button"
-						onClick={() => drawerRef.current?.close()}
-					>
-						<FaXmark />
-					</Button>
-				</div>
-				{children(drawerRef)}
-			</dialog>
-		</>
+		<FullDrawer>
+			{(drawerRef) => (
+				<Container className="flex flex-col gap-4">
+					{menuItems.map((menuItem) => (
+						<Button key={menuItem.key} variant="text" asChild>
+							<InternalLink
+								href={menuItem.url}
+								onClick={() => drawerRef.current?.close()}
+							>
+								{menuItem.label}
+							</InternalLink>
+						</Button>
+					))}
+					{children}
+				</Container>
+			)}
+		</FullDrawer>
 	);
 };
