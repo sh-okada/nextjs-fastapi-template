@@ -1,7 +1,7 @@
 import { Label } from "@/components/core/label";
 import type { ComponentProps } from "react";
 
-const radioBaseStyle = `
+export const radioBaseStyle = `
 	appearance-none
 	size-4
 	rounded-full

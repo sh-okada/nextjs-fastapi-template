@@ -6,7 +6,7 @@ import {
 	isValidElement,
 } from "react";
 
-type SlotProps = HTMLAttributes<HTMLElement> & {
+export type SlotProps = HTMLAttributes<HTMLElement> & {
 	children?: ReactNode;
 };
 

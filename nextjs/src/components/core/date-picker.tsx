@@ -1,6 +1,6 @@
 import { Input, type InputProps } from "@/components/core/input";
 
-const datePickerBaseStyle = `
+export const datePickerBaseStyle = `
 	w-full
 `;
 

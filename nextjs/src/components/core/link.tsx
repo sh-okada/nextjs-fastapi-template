@@ -1,7 +1,7 @@
 import { Slot } from "@/components/core/slot";
 import type { ComponentProps } from "react";
 
-const linkStyle = `
+export const linkStyle = `
 	text-blue-900
 	rounded-md
 	underline

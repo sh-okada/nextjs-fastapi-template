@@ -9,7 +9,7 @@ const SelectItem = (props: SelectItemProps) => {
 
 export type SelectItems = { value: string; label: string }[];
 
-const selectBaseStyle = `
+export const selectBaseStyle = `
   w-full
   appearance-none
   border
