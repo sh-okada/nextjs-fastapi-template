@@ -8,7 +8,7 @@ export type PageContentProps = {
 export const PageContent = ({ title, children }: PageContentProps) => {
   return (
     <main>
-      <h1 className="text-4xl mb-4">{title}</h1>
+      <h1 className="text-4xl mb-8">{title}</h1>
       {children}
     </main>
   );
