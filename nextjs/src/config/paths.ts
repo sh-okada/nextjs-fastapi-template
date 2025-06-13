@@ -19,6 +19,11 @@ const paths = {
     path: "/profile",
     getHref: () => "/profile",
   },
+  confirmProfile: {
+    name: "サンプルフォーム確認",
+    path: "/profile/confirm",
+    getHref: () => "/profile/confirm",
+  },
 } as const;
 
 export { paths };

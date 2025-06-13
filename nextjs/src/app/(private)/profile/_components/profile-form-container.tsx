@@ -1,6 +1,6 @@
 import { getDepartments } from "@/api/department/department";
 import { getGrades } from "@/api/grade/grade";
-import { ProfileForm } from "@/app/(private)/profile/_components/profile-form";
+import { ProfileForm } from "@/app/(private)/profile/_components/profile-form/profile-form";
 
 export const ProfileFormContainer = async () => {
   const grades = await getGrades();

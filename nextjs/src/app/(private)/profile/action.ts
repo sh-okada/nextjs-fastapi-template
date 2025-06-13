@@ -10,11 +10,13 @@ export async function postProfile(_prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
     schema: profileSchema,
   });
+  console.log("hello");
 
   if (submission.status !== "success") {
     return submission.reply();
   }
+
   await postProfileApi(submission.value);
 
-  return redirect(paths.home.getHref());
+  redirect(paths.home.getHref());
 }
