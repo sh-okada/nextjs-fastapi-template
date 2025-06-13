@@ -1,4 +1,4 @@
-import { SectionContent } from "@/components/core/section/parts/section-body";
+import { SectionContent } from "@/components/core/section/parts/section-content";
 import { SectionHeader } from "@/components/core/section/parts/section-header";
 import type { ComponentProps, FunctionComponent } from "react";
 

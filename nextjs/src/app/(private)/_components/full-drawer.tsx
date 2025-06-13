@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/core/button";
 import { type ReactNode, type RefObject, useRef } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
