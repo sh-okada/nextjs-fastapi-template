@@ -1,5 +1,7 @@
 import { Checkbox } from "@/components/core/checkbox";
 import { Markdown } from "@/components/ui-parts/markdown/markdown";
+import { PageContent } from "@/components/ui-parts/page-content";
+import { paths } from "@/config/paths";
 
 const markdownText = `
 # H1
@@ -31,9 +33,8 @@ console.log("Hello, world!");
 
 export default async function Page() {
   return (
-    <div>
+    <PageContent title={paths.home.name}>
       <Markdown body={markdownText} />
-      <Checkbox>チェックボックス</Checkbox>
-    </div>
+    </PageContent>
   );
 }

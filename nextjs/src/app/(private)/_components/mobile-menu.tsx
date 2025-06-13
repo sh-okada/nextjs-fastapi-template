@@ -16,12 +16,12 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
   const menuItems = [
     {
       key: 1,
-      label: "サンプルアプリについて",
+      label: paths.home.name,
       url: paths.home.getHref(),
     },
     {
       key: 2,
-      label: "プロフィール",
+      label: paths.profile.name,
       url: paths.profile.getHref(),
     },
   ];
