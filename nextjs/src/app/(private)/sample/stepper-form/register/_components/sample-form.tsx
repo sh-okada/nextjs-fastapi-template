@@ -48,12 +48,16 @@ export const SampleForm = ({
             <DatePicker
               {...getInputProps(joiningDate, { type: "date" })}
               key={joiningDate.key}
+              defaultValue={joiningDate.value || joiningDate.initialValue}
             />
             <ErrorText>{joiningDate.errors}</ErrorText>
           </Fieldset>
           <Field>
             <Field.Label htmlFor={years.id}>入社年数を選択</Field.Label>
-            <Select {...getSelectProps(years)}>
+            <Select
+              {...getSelectProps(years)}
+              defaultValue={years.value || years.initialValue}
+            >
               <Select.Item value="" hidden>
                 選択してください
               </Select.Item>
@@ -67,7 +71,10 @@ export const SampleForm = ({
           </Field>
           <Field>
             <Field.Label htmlFor={department.id}>部署を選択</Field.Label>
-            <Select {...getSelectProps(department)}>
+            <Select
+              {...getSelectProps(department)}
+              defaultValue={department.value || department.initialValue}
+            >
               <Select.Item value="" hidden>
                 選択してください
               </Select.Item>
@@ -87,7 +94,10 @@ export const SampleForm = ({
                   key={item.value}
                   name={grade.name}
                   value={item.value}
-                  defaultChecked={grade.initialValue === item.value}
+                  defaultChecked={
+                    grade.value === item.value ||
+                    grade.initialValue === item.value
+                  }
                 >
                   {item.label}
                 </Radio>

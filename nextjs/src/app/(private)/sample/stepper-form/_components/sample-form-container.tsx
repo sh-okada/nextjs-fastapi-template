@@ -1,8 +1,20 @@
 import { getDepartments } from "@/api/department/department";
 import { getGrades } from "@/api/grade/grade";
 import { SampleForm } from "@/app/(private)/sample/stepper-form/register/_components/sample-form";
+import type { SelectItems } from "@/components/core/select";
+import type { ReactNode } from "react";
 
-export const SampleFormContainer = async () => {
+export type SampleFormPropsContainer = {
+  children: (
+    yearItems: SelectItems,
+    departmentItems: SelectItems,
+    gradeItems: SelectItems,
+  ) => ReactNode;
+};
+
+export const SampleFormContainer = async ({
+  children,
+}: SampleFormPropsContainer) => {
   const grades = await getGrades();
   const departments = await getDepartments();
 
@@ -19,11 +31,5 @@ export const SampleFormContainer = async () => {
     label: grade.name,
   }));
 
-  return (
-    <SampleForm
-      yearItems={yearItems}
-      departmentItems={departmentItems}
-      gradeItems={gradeItems}
-    />
-  );
+  return children(yearItems, departmentItems, gradeItems);
 };

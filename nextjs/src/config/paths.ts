@@ -15,12 +15,14 @@ export const paths = {
     name: "シンプルなフォーム",
     getHref: () => "/sample/form",
   },
-  sampleStepperFormRegister: {
-    name: "ステップ形式のフォーム",
-    getHref: () => "/sample/stepper-form/register",
-  },
-  sampleStepperFormConfirm: {
-    name: "ステップ形式のフォーム",
-    getHref: () => "/sample/stepper-form/confirm",
+  sampleStepperForm: {
+    register: {
+      name: "ステップ形式のフォーム",
+      getHref: () => "/sample/stepper-form/register",
+      confirm: {
+        name: "ステップ形式のフォーム",
+        getHref: () => "/sample/stepper-form/register/confirm",
+      },
+    },
   },
 } as const;
