@@ -6,5 +6,5 @@ export const SectionContent = ({
   className = "",
   ...rest
 }: SectionContentProps) => {
-  return <div className={`mt-2 rounded-md ${className}`} {...rest} />;
+  return <div className={`mt-2 ${className}`} {...rest} />;
 };

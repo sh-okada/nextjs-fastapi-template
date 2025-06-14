@@ -12,7 +12,7 @@ const paths = {
     getHref: () => "/signup",
   },
   sampleForm: {
-    name: "サンプルフォーム",
+    name: "シンプルなフォーム",
     getHref: () => "/sample/form",
   },
 } as const;
