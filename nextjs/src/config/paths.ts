@@ -1,4 +1,4 @@
-const paths = {
+export const paths = {
   home: {
     name: "このアプリについて",
     getHref: () => "/",
@@ -15,6 +15,8 @@ const paths = {
     name: "シンプルなフォーム",
     getHref: () => "/sample/form",
   },
+  sampleStepperForm: {
+    name: "ステップ形式のフォーム",
+    getHref: () => "/sample/stepper-form",
+  },
 } as const;
-
-export { paths };

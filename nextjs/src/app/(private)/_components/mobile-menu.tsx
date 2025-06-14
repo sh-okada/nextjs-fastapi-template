@@ -24,6 +24,11 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
       label: paths.sampleForm.name,
       url: paths.sampleForm.getHref(),
     },
+    {
+      key: 3,
+      label: paths.sampleStepperForm.name,
+      url: paths.sampleStepperForm.getHref(),
+    },
   ];
   const pathname = usePathname();
 
