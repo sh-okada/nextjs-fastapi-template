@@ -1,6 +1,6 @@
 "use client";
 
-import { postProfile } from "@/app/(private)/profile/action";
+import { postProfile } from "@/app/(private)/sample/form/action";
 import { Button } from "@/components/core/button";
 import { DatePicker } from "@/components/core/date-picker";
 import { ErrorText } from "@/components/core/error-text";
@@ -20,17 +20,17 @@ import {
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";
 
-export type ProfileFormProps = {
+export type SampleFormProps = {
   yearItems: SelectItems;
   departmentItems: SelectItems;
   gradeItems: SelectItems;
 };
 
-export const ProfileForm = ({
+export const SampleForm = ({
   yearItems,
   departmentItems,
   gradeItems,
-}: ProfileFormProps) => {
+}: SampleFormProps) => {
   const [lastResult, action] = useActionState(postProfile, null);
   const [form, fields] = useForm({
     lastResult,

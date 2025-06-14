@@ -10,7 +10,6 @@ export async function postProfile(_prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
     schema: profileSchema,
   });
-  console.log("hello");
 
   if (submission.status !== "success") {
     return submission.reply();

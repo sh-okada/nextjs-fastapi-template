@@ -21,8 +21,8 @@ export const MobileMenu = ({ children }: MobileMenuProps) => {
     },
     {
       key: 2,
-      label: paths.profile.name,
-      url: paths.profile.getHref(),
+      label: paths.sampleForm.name,
+      url: paths.sampleForm.getHref(),
     },
   ];
   const pathname = usePathname();

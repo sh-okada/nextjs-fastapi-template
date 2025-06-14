@@ -1,8 +1,8 @@
 import { getDepartments } from "@/api/department/department";
 import { getGrades } from "@/api/grade/grade";
-import { ProfileForm } from "@/app/(private)/profile/_components/profile-form/profile-form";
+import { SampleForm } from "@/app/(private)/sample/form/_components/sample-form";
 
-export const ProfileFormContainer = async () => {
+export const SampleFormContainer = async () => {
   const grades = await getGrades();
   const departments = await getDepartments();
 
@@ -20,7 +20,7 @@ export const ProfileFormContainer = async () => {
   }));
 
   return (
-    <ProfileForm
+    <SampleForm
       yearItems={yearItems}
       departmentItems={departmentItems}
       gradeItems={gradeItems}

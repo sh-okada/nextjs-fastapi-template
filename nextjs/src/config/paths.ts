@@ -1,28 +1,19 @@
 const paths = {
   home: {
     name: "このアプリについて",
-    path: "/",
     getHref: () => "/",
   },
   login: {
     name: "ログイン",
-    path: "/login",
     getHref: () => "/login",
   },
   signup: {
     name: "新規登録",
-    path: "/signup",
     getHref: () => "/signup",
   },
-  profile: {
+  sampleForm: {
     name: "サンプルフォーム",
-    path: "/profile",
-    getHref: () => "/profile",
-  },
-  confirmProfile: {
-    name: "サンプルフォーム確認",
-    path: "/profile/confirm",
-    getHref: () => "/profile/confirm",
+    getHref: () => "/sample/form",
   },
 } as const;
 
