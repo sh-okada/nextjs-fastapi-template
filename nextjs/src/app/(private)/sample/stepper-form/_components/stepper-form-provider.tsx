@@ -1,5 +1,7 @@
+"use client";
+
 import { postProfile } from "@/app/(private)/sample/stepper-form/action";
-import { profileSchema } from "@/lib/zod";
+import { profileSchemaWithIntent } from "@/lib/zod";
 import { FormProvider, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { type ReactNode, useActionState } from "react";
@@ -13,7 +15,7 @@ export const StepperFormProvider = ({ children }: StepperFormProviderProps) => {
   const [form] = useForm({
     lastResult,
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: profileSchema });
+      return parseWithZod(formData, { schema: profileSchemaWithIntent });
     },
     shouldValidate: "onBlur",
   });
