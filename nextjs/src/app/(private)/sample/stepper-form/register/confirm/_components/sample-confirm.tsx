@@ -1,11 +1,18 @@
 "use client";
 
 import { Button } from "@/components/core/button";
+import { DatePicker } from "@/components/core/date-picker";
+import { Input } from "@/components/core/input";
 import { Section } from "@/components/core/section/section";
 import type { SelectItems } from "@/components/core/select";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
-import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
+import {
+  getFormProps,
+  getInputProps,
+  useField,
+  useFormMetadata,
+} from "@conform-to/react";
 
 export type SampleConfirmProps = {
   yearItems: SelectItems;
@@ -42,6 +49,14 @@ export const SampleConfirm = ({
             }
           </p>
           <p>{gradeItems.find((item) => item.value === grade.value)?.label}</p>
+          <Input name={years.name} value={years.value} readOnly hidden />
+          <Input
+            name={department.name}
+            value={department.value}
+            readOnly
+            hidden
+          />
+          <Input name={grade.name} value={grade.value} readOnly hidden />
         </Section.Content>
       </Section>
       <Button className="w-full" type="submit" name="intent" value="submit">
@@ -52,6 +67,12 @@ export const SampleConfirm = ({
           入力内容を修正する
         </InternalLink>
       </Button>
+      <DatePicker
+        name={joiningDate.name}
+        value={joiningDate.value}
+        readOnly
+        hidden
+      />
     </form>
   );
 };
