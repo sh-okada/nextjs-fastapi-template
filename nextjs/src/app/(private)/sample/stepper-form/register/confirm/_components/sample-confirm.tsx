@@ -1,21 +1,11 @@
 "use client";
 
 import { Button } from "@/components/core/button";
-import { DatePicker } from "@/components/core/date-picker";
-import { ErrorText } from "@/components/core/error-text";
-import { Field } from "@/components/core/field";
-import { Fieldset } from "@/components/core/fieldset";
-import { Radio } from "@/components/core/radio";
-import { RadioGroup } from "@/components/core/radio-group";
 import { Section } from "@/components/core/section/section";
-import { Select, type SelectItems } from "@/components/core/select";
-import {
-  getFormProps,
-  getInputProps,
-  getSelectProps,
-  useField,
-  useFormMetadata,
-} from "@conform-to/react";
+import type { SelectItems } from "@/components/core/select";
+import { InternalLink } from "@/components/ui-parts/internal-link";
+import { paths } from "@/config/paths";
+import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
 
 export type SampleConfirmProps = {
   yearItems: SelectItems;
@@ -44,11 +34,23 @@ export const SampleConfirm = ({
         <Section.Header>入力内容の確認</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <p>{joiningDate.value}</p>
-          <p>{yearItems.find((item) => item.value === years.value)}</p>
+          <p>{yearItems.find((item) => item.value === years.value)?.label}</p>
+          <p>
+            {
+              departmentItems.find((item) => item.value === department.value)
+                ?.label
+            }
+          </p>
+          <p>{gradeItems.find((item) => item.value === grade.value)?.label}</p>
         </Section.Content>
       </Section>
-      <Button className="w-full" name="intent" value="confirm" type="submit">
+      <Button className="w-full" type="submit" name="intent" value="submit">
         この内容で登録する
+      </Button>
+      <Button asChild>
+        <InternalLink href={paths.sampleStepperForm.register.getHref()}>
+          入力内容を修正する
+        </InternalLink>
       </Button>
     </form>
   );

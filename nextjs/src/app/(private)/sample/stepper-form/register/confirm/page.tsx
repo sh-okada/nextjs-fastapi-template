@@ -1,5 +1,5 @@
 import { SampleFormContainer } from "@/app/(private)/sample/stepper-form/_components/sample-form-container";
-import { SampleForm } from "@/app/(private)/sample/stepper-form/register/_components/sample-form";
+import { SampleConfirm } from "@/app/(private)/sample/stepper-form/register/confirm/_components/sample-confirm";
 import { PageContent } from "@/components/ui-parts/page-content";
 import { paths } from "@/config/paths";
 
@@ -8,7 +8,7 @@ export default function Page() {
     <PageContent title={paths.sampleStepperForm.register.confirm.name}>
       <SampleFormContainer>
         {(yearItems, departmentItems, gradeItems) => (
-          <SampleForm
+          <SampleConfirm
             yearItems={yearItems}
             departmentItems={departmentItems}
             gradeItems={gradeItems}

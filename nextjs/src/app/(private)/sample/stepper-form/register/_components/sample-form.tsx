@@ -107,7 +107,7 @@ export const SampleForm = ({
           </Fieldset>
         </Section.Content>
       </Section>
-      <Button className="w-full" name="intent" value="confirm" type="submit">
+      <Button className="w-full" type="submit" name="intent" value="confirm">
         入力内容を確認する
       </Button>
     </form>

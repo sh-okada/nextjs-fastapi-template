@@ -46,9 +46,3 @@ export const profileSchema = z.object({
   department: z.string({ message: message.required("部署") }),
   grade: z.string({ message: message.required("グレード") }),
 });
-
-export const profileSchemaWithIntent = z
-  .object({
-    intent: z.enum(["confirm", "submit"]),
-  })
-  .and(profileSchema);
