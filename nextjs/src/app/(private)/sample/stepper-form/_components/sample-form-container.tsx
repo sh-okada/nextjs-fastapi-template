@@ -1,6 +1,5 @@
 import { getDepartments } from "@/api/department/department";
 import { getGrades } from "@/api/grade/grade";
-import { SampleForm } from "@/app/(private)/sample/stepper-form/register/_components/sample-form";
 import type { SelectItems } from "@/components/core/select";
 import type { ReactNode } from "react";
 
