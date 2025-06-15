@@ -5,6 +5,7 @@ import { DatePicker } from "@/components/core/date-picker";
 import { Input } from "@/components/core/input";
 import { Section } from "@/components/core/section/section";
 import type { SelectItems } from "@/components/core/select";
+import { Stepper } from "@/components/core/stepper/stepper";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
 import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
@@ -44,7 +45,9 @@ export const SampleConfirm = ({
       onSubmit={form.onSubmit}
     >
       <Section>
-        <Section.Header>入力内容の確認</Section.Header>
+        <Stepper current={2} progress={3}>
+          入力内容の確認
+        </Stepper>
         <Section.Content className="flex flex-col gap-4">
           <table className="w-full">
             <colgroup className="border-r border-black bg-gray-100" />

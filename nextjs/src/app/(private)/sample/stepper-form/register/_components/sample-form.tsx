@@ -9,6 +9,7 @@ import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
 import { Section } from "@/components/core/section/section";
 import { Select, type SelectItems } from "@/components/core/select";
+import { Stepper } from "@/components/core/stepper/stepper";
 import {
   getFormProps,
   getInputProps,
@@ -41,7 +42,9 @@ export const SampleForm = ({
       onSubmit={form.onSubmit}
     >
       <Section>
-        <Section.Header>プロフィールを入力</Section.Header>
+        <Stepper current={1} progress={3}>
+          プロフィールを入力
+        </Stepper>
         <Section.Content className="flex flex-col gap-4">
           <Fieldset>
             <Fieldset.Legend>入社日を選択</Fieldset.Legend>
