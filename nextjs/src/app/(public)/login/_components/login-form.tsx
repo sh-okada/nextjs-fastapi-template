@@ -5,6 +5,7 @@ import { Button } from "@/components/core/button";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
+import { Link } from "@/components/core/link";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod";
@@ -44,9 +45,11 @@ export const LoginForm = () => {
         </Field>
         <Button type="submit">ログイン</Button>
         <div className="text-right">
-          <InternalLink href={paths.signup.getHref()}>
-            新規登録はこちら
-          </InternalLink>
+          <Link asChild>
+            <InternalLink href={paths.signup.getHref()}>
+              新規登録はこちら
+            </InternalLink>
+          </Link>
         </div>
       </div>
     </form>
