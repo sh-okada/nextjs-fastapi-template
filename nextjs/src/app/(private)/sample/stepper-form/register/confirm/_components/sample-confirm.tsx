@@ -44,30 +44,25 @@ export const SampleConfirm = ({
             }
           </p>
           <p>{gradeItems.find((item) => item.value === grade.value)?.label}</p>
-          <DatePicker
-            name={joiningDate.name}
-            value={joiningDate.value}
-            readOnly
-            hidden
-          />
-          <Input name={years.name} value={years.value} readOnly hidden />
-          <Input
-            name={department.name}
-            value={department.value}
-            readOnly
-            hidden
-          />
-          <Input name={grade.name} value={grade.value} readOnly hidden />
         </Section.Content>
       </Section>
       <Button className="w-full" type="submit" name="intent" value="submit">
         この内容で登録する
       </Button>
-      <Button asChild>
+      <Button className="text-center" variant="outline" asChild>
         <InternalLink href={paths.sampleStepperForm.register.getHref()}>
           入力内容を修正する
         </InternalLink>
       </Button>
+      <DatePicker
+        name={joiningDate.name}
+        value={joiningDate.value}
+        readOnly
+        hidden
+      />
+      <Input name={years.name} value={years.value} readOnly hidden />
+      <Input name={department.name} value={department.value} readOnly hidden />
+      <Input name={grade.name} value={grade.value} readOnly hidden />
     </form>
   );
 };
