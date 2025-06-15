@@ -7,12 +7,7 @@ import { Section } from "@/components/core/section/section";
 import type { SelectItems } from "@/components/core/select";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
-import {
-  getFormProps,
-  getInputProps,
-  useField,
-  useFormMetadata,
-} from "@conform-to/react";
+import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
 
 export type SampleConfirmProps = {
   yearItems: SelectItems;
@@ -49,6 +44,12 @@ export const SampleConfirm = ({
             }
           </p>
           <p>{gradeItems.find((item) => item.value === grade.value)?.label}</p>
+          <DatePicker
+            name={joiningDate.name}
+            value={joiningDate.value}
+            readOnly
+            hidden
+          />
           <Input name={years.name} value={years.value} readOnly hidden />
           <Input
             name={department.name}
@@ -67,12 +68,6 @@ export const SampleConfirm = ({
           入力内容を修正する
         </InternalLink>
       </Button>
-      <DatePicker
-        name={joiningDate.name}
-        value={joiningDate.value}
-        readOnly
-        hidden
-      />
     </form>
   );
 };
