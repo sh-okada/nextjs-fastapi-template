@@ -40,14 +40,16 @@ export const SampleConfirm = ({
 
   return (
     <form
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-8"
       {...getFormProps(form)}
       onSubmit={form.onSubmit}
     >
+      <Stepper>
+        <Stepper.Progress current={2} progress={3} />
+        <Stepper.Header>入力内容の確認</Stepper.Header>
+      </Stepper>
       <Section>
-        <Stepper current={2} progress={3}>
-          入力内容の確認
-        </Stepper>
+        <Section.Header>プロフィール</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <table className="w-full">
             <colgroup className="border-r border-black bg-gray-100" />

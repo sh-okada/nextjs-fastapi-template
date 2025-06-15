@@ -1,9 +1,12 @@
-export type ProgressProps = {
+export type StepperProgressProps = {
   current: number;
   progress: number;
 };
 
-export const Progress = ({ current, progress }: ProgressProps) => {
+export const StepperProgress = ({
+  current,
+  progress,
+}: StepperProgressProps) => {
   const radius = (80 - 8) / 2;
   const circumference = 2 * Math.PI * radius;
   const offset = circumference * (1 - current / progress);
@@ -32,7 +35,7 @@ export const Progress = ({ current, progress }: ProgressProps) => {
           strokeDasharray={circumference}
           strokeDashoffset={offset}
           strokeLinecap="round"
-          className="stroke-blue-800 transition-all duration-500"
+          className="stroke-blue-800"
         />
       </svg>
       <span className="absolute inset-0 flex items-center justify-center text-lg font-bold">

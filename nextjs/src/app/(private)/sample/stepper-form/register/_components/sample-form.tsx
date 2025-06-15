@@ -37,14 +37,16 @@ export const SampleForm = ({
 
   return (
     <form
-      className="flex flex-col gap-4"
+      className="flex flex-col gap-8"
       {...getFormProps(form)}
       onSubmit={form.onSubmit}
     >
+      <Stepper>
+        <Stepper.Progress current={1} progress={3} />
+        <Stepper.Header>プロフィールを入力</Stepper.Header>
+      </Stepper>
       <Section>
-        <Stepper current={1} progress={3}>
-          プロフィールを入力
-        </Stepper>
+        <Section.Header>プロフィール</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <Fieldset>
             <Fieldset.Legend>入社日を選択</Fieldset.Legend>
