@@ -26,6 +26,17 @@ export const SampleConfirm = ({
   const [department] = useField<string>("department");
   const [grade] = useField<string>("grade");
 
+  const selectJoiningDate = joiningDate.value;
+  const selectedYear = yearItems.find(
+    (item) => item.value === years.value,
+  )?.label;
+  const selectedDepartment = departmentItems.find(
+    (item) => item.value === department.value,
+  )?.label;
+  const selectedGrade = gradeItems.find(
+    (item) => item.value === grade.value,
+  )?.label;
+
   return (
     <form
       className="flex flex-col gap-4"
@@ -35,15 +46,38 @@ export const SampleConfirm = ({
       <Section>
         <Section.Header>入力内容の確認</Section.Header>
         <Section.Content className="flex flex-col gap-4">
-          <p>{joiningDate.value}</p>
-          <p>{yearItems.find((item) => item.value === years.value)?.label}</p>
-          <p>
-            {
-              departmentItems.find((item) => item.value === department.value)
-                ?.label
-            }
-          </p>
-          <p>{gradeItems.find((item) => item.value === grade.value)?.label}</p>
+          <table className="w-full">
+            <colgroup className="border-r border-black bg-gray-100" />
+            <colgroup>
+              <col className="border-r border-gray-100" />
+            </colgroup>
+            <tbody>
+              <tr>
+                <th className="px-4 py-5 text-start align-top" scope="row">
+                  入社年月日
+                </th>
+                <td className="px-4 py-5 align-top">{selectJoiningDate}</td>
+              </tr>
+              <tr>
+                <th className="px-4 py-5 text-start align-top" scope="row">
+                  入社年数
+                </th>
+                <td className="px-4 py-5 align-top">{selectedYear}</td>
+              </tr>
+              <tr>
+                <th className="px-4 py-5 text-start align-top" scope="row">
+                  部署
+                </th>
+                <td className="px-4 py-5 align-top">{selectedDepartment}</td>
+              </tr>
+              <tr>
+                <th className="px-4 py-5 text-start align-top" scope="row">
+                  グレード
+                </th>
+                <td className="px-4 py-5 align-top">{selectedGrade}</td>
+              </tr>
+            </tbody>
+          </table>
         </Section.Content>
       </Section>
       <Button className="w-full" type="submit" name="intent" value="submit">
