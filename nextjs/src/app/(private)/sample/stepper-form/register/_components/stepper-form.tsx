@@ -18,17 +18,17 @@ import {
   useFormMetadata,
 } from "@conform-to/react";
 
-export type SampleFormProps = {
+export type StepperFormProps = {
   yearItems: SelectItems;
   departmentItems: SelectItems;
   gradeItems: SelectItems;
 };
 
-export const SampleForm = ({
+export const StepperForm = ({
   yearItems,
   departmentItems,
   gradeItems,
-}: SampleFormProps) => {
+}: StepperFormProps) => {
   const form = useFormMetadata();
   const [joiningDate] = useField<Date>("joiningDate");
   const [years] = useField<string>("years");

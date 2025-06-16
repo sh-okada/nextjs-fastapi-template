@@ -1,6 +1,6 @@
 "use server";
 
-import { postProfile as postProfileApi } from "@/api/profile/profile";
+// import { postProfile as postProfileApi } from "@/api/profile/profile";
 import { paths } from "@/config/paths";
 import { profileSchema } from "@/lib/zod";
 import { parseWithZod } from "@conform-to/zod";
@@ -15,7 +15,7 @@ export async function postProfile(_prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  await postProfileApi(submission.value);
+  // await postProfileApi(submission.value);
 
-  redirect(paths.home.getHref());
+  redirect(paths.sampleStepperForm.register.complete.getHref());
 }

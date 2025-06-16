@@ -3,7 +3,7 @@ import { getGrades } from "@/api/grade/grade";
 import type { SelectItems } from "@/components/core/select";
 import type { ReactNode } from "react";
 
-export type SampleFormPropsContainer = {
+export type StepperFormPropsContainer = {
   children: (
     yearItems: SelectItems,
     departmentItems: SelectItems,
@@ -11,9 +11,9 @@ export type SampleFormPropsContainer = {
   ) => ReactNode;
 };
 
-export const SampleFormContainer = async ({
+export const StepperFormContainer = async ({
   children,
-}: SampleFormPropsContainer) => {
+}: StepperFormPropsContainer) => {
   const grades = await getGrades();
   const departments = await getDepartments();
 

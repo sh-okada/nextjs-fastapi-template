@@ -1,5 +1,5 @@
-import { SampleFormContainer } from "@/app/(private)/sample/stepper-form/register/_components/sample-form-container";
-import { SampleConfirm } from "@/app/(private)/sample/stepper-form/register/confirm/_components/sample-confirm";
+import { StepperFormContainer } from "@/app/(private)/sample/stepper-form/register/_components/stepper-form-container";
+import { StepperConfirm } from "@/app/(private)/sample/stepper-form/register/confirm/_components/stepper-confirm";
 import { PageContent } from "@/components/ui-parts/page-content";
 import { Spinner } from "@/components/ui-parts/spinner";
 import { paths } from "@/config/paths";
@@ -9,15 +9,15 @@ export default function Page() {
   return (
     <PageContent title={paths.sampleStepperForm.register.confirm.name}>
       <Suspense fallback={<Spinner />}>
-        <SampleFormContainer>
+        <StepperFormContainer>
           {(yearItems, departmentItems, gradeItems) => (
-            <SampleConfirm
+            <StepperConfirm
               yearItems={yearItems}
               departmentItems={departmentItems}
               gradeItems={gradeItems}
             />
           )}
-        </SampleFormContainer>
+        </StepperFormContainer>
       </Suspense>
     </PageContent>
   );

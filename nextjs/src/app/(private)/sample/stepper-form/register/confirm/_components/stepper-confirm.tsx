@@ -10,17 +10,17 @@ import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
 import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
 
-export type SampleConfirmProps = {
+export type StepperConfirmProps = {
   yearItems: SelectItems;
   departmentItems: SelectItems;
   gradeItems: SelectItems;
 };
 
-export const SampleConfirm = ({
+export const StepperConfirm = ({
   yearItems,
   departmentItems,
   gradeItems,
-}: SampleConfirmProps) => {
+}: StepperConfirmProps) => {
   const form = useFormMetadata();
   const [joiningDate] = useField<Date>("joiningDate");
   const [years] = useField<string>("years");

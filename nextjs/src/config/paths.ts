@@ -23,6 +23,10 @@ export const paths = {
         name: "ステップ形式のフォーム",
         getHref: () => "/sample/stepper-form/register/confirm",
       },
+      complete: {
+        name: "ステップ形式のフォーム",
+        getHref: () => "/sample/stepper-form/register/complete",
+      },
     },
   },
 } as const;
