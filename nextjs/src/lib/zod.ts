@@ -16,6 +16,8 @@ const isPastOrToday = (date: Date) => {
   );
 };
 
+const postalCodeRegex = /^\d{7}$/;
+
 export const loginSchema = z.object({
   username: z.string({ message: message.required("ユーザー名") }).max(50, {
     message: message.max("ユーザー名", 50),
@@ -46,3 +48,19 @@ export const profileSchema = z.object({
   department: z.string({ message: message.required("部署") }),
   grade: z.string({ message: message.required("グレード") }),
 });
+
+export const zipcodeSchema = z.object({
+  zipcode: z
+    .string({ message: message.required("郵便番号") })
+    .regex(postalCodeRegex, {
+      message: "郵便番号の形式が正しくありません（例: 1234567）",
+    }),
+});
+
+export const addressSchema = zipcodeSchema.merge(
+  z.object({
+    address: z.string({ message: message.required("住所") }).max(100, {
+      message: message.max("住所", 100),
+    }),
+  }),
+);

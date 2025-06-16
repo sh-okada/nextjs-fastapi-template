@@ -29,4 +29,8 @@ export const paths = {
       },
     },
   },
+  sampleDynamicForm: {
+    name: "動的なフォーム",
+    getHref: () => "/sample/dynamic-form",
+  },
 } as const;
