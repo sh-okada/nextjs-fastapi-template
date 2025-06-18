@@ -13,7 +13,7 @@ export const paths = {
   },
   sampleForm: {
     name: "シンプルなフォーム",
-    getHref: () => "/sample/form",
+    getHref: () => "/sample/simple-form",
   },
   sampleStepperForm: {
     register: {

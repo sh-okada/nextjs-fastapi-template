@@ -1,8 +1,8 @@
 import { getDepartments } from "@/api/department/department";
 import { getGrades } from "@/api/grade/grade";
-import { SampleForm } from "@/app/(private)/sample/form/_components/sample-form";
+import { SimpleForm } from "@/app/(private)/sample/simple-form/_components/simple-form";
 
-export const SampleFormContainer = async () => {
+export const SimpleFormContainer = async () => {
   const grades = await getGrades();
   const departments = await getDepartments();
 
@@ -20,7 +20,7 @@ export const SampleFormContainer = async () => {
   }));
 
   return (
-    <SampleForm
+    <SimpleForm
       yearItems={yearItems}
       departmentItems={departmentItems}
       gradeItems={gradeItems}
