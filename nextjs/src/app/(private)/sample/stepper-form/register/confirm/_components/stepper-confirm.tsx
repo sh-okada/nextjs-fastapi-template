@@ -52,8 +52,8 @@ export const StepperConfirm = ({
         <Section.Header>プロフィール</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <table className="w-full">
-            <colgroup className="border-r border-black bg-gray-100" />
             <colgroup>
+              <col className="border-r border-black bg-gray-100" />
               <col className="border-r border-gray-100" />
             </colgroup>
             <tbody>

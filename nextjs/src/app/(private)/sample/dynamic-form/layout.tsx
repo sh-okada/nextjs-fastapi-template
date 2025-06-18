@@ -1,10 +1,10 @@
 import { DynamicFormProvider } from "@/app/(private)/sample/dynamic-form/_components/dynamic-form-provider";
 import type { ReactNode } from "react";
 
-export default function Layout({
+export default function DynamicFormLayout({
   children,
-}: Readonly<{
+}: {
   children: ReactNode;
-}>) {
+}) {
   return <DynamicFormProvider>{children}</DynamicFormProvider>;
 }
