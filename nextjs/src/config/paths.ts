@@ -31,7 +31,7 @@ export const paths = {
   },
   sampleDynamicForm: {
     name: "動的なフォーム",
-    getHref: (zipcode?: string) =>
-      `/sample/dynamic-form${zipcode ? `?zipcode=${encodeURIComponent(String(zipcode))}` : ""}`,
+    getHref: (query: { zipcode?: string }) =>
+      `/sample/dynamic-form?${new URLSearchParams(query).toString()}`,
   },
 } as const;

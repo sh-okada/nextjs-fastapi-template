@@ -39,7 +39,9 @@ export const DynamicFormProvider = ({ children }: DynamicFormProviderProps) => {
 
       switch (formData.get("intent")) {
         case "search":
-          router.push(paths.sampleDynamicForm.getHref(fields.zipcode.value));
+          router.push(
+            paths.sampleDynamicForm.getHref({ zipcode: fields.zipcode.value }),
+          );
           break;
         default:
           startTransition(() => {
