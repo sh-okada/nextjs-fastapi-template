@@ -67,6 +67,7 @@ export const DynamicForm = ({ searchedAddress }: DynamicFormProps) => {
           <Field>
             <Field.Label htmlFor={address.id}>住所</Field.Label>
             <Input
+              placeholder="広島県広島市中区大手町11-10 NHK広島放送センタービル"
               {...getInputProps(address, { type: "text" })}
               key={address.key}
               defaultValue={
