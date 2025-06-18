@@ -1,13 +1,16 @@
 "use server";
 
 import { paths } from "@/config/paths";
-import { addressSchema } from "@/lib/zod";
+import { personalInfoSchema } from "@/lib/zod/schema";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
 
-export async function postAddress(_prevState: unknown, formData: FormData) {
+export async function submitPersonalInfo(
+  _prevState: unknown,
+  formData: FormData,
+) {
   const submission = parseWithZod(formData, {
-    schema: addressSchema,
+    schema: personalInfoSchema,
   });
 
   if (submission.status !== "success") {

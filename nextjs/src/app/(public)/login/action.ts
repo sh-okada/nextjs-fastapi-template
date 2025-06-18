@@ -2,7 +2,7 @@
 
 import { signIn } from "@/lib/auth";
 import { isUnAuthorizedError } from "@/lib/axios";
-import { loginSchema } from "@/lib/zod";
+import { loginSchema } from "@/lib/zod/schema";
 import { parseWithZod } from "@conform-to/zod";
 import { AuthError } from "next-auth";
 

@@ -2,7 +2,7 @@
 
 import { postProfile } from "@/app/(private)/sample/stepper-form/register/action";
 import { paths } from "@/config/paths";
-import { profileSchema } from "@/lib/zod";
+import { profileSchema } from "@/lib/zod/schema";
 import { FormProvider, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRouter } from "next/navigation";
@@ -23,14 +23,16 @@ export const StepperFormProvider = ({ children }: StepperFormProviderProps) => {
     shouldValidate: "onBlur",
     onSubmit(event, { formData }) {
       event.preventDefault();
-      if (formData.get("intent") === "confirm") {
-        router.push(paths.sampleStepperForm.register.confirm.getHref());
-      }
 
-      if (formData.get("intent") === "submit") {
-        startTransition(async () => {
-          action(formData);
-        });
+      switch (formData.get("intent")) {
+        case "confirm":
+          router.push(paths.sampleStepperForm.register.confirm.getHref());
+          break;
+        case "submit":
+          startTransition(async () => {
+            action(formData);
+          });
+          break;
       }
     },
   });

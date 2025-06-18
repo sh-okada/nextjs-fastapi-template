@@ -10,7 +10,7 @@ import { Radio } from "@/components/core/radio";
 import { RadioGroup } from "@/components/core/radio-group";
 import { Section } from "@/components/core/section/section";
 import { Select, type SelectItems } from "@/components/core/select";
-import { profileSchema } from "@/lib/zod";
+import { profileSchema } from "@/lib/zod/schema";
 import {
   getFormProps,
   getInputProps,

@@ -1,85 +1,83 @@
 "use client";
 
-import { postAddress } from "@/app/(private)/sample/dynamic-form/action";
 import { Button } from "@/components/core/button";
 import { ErrorText } from "@/components/core/error-text";
 import { Field } from "@/components/core/field";
 import { Input } from "@/components/core/input";
 import { Section } from "@/components/core/section/section";
-import { paths } from "@/config/paths";
-import { addressSchema } from "@/lib/zod";
-import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
-import { useRouter } from "next/navigation";
-import { useActionState } from "react";
+import {
+  getFormProps,
+  getInputProps,
+  useField,
+  useForm,
+  useFormMetadata,
+} from "@conform-to/react";
 
-export type DynamicFormProps = {
-  address?: string;
+type SearchedAddress = {
+  zipcode: string;
+  address1: string;
+  address2: string;
+  address3: string;
 };
 
-export const DynamicForm = ({ address }: DynamicFormProps) => {
-  const router = useRouter();
-  const [lastResult, action] = useActionState(postAddress, null);
-  const [form, fields] = useForm({
-    lastResult,
-    onValidate({ formData }) {
-      if (formData.get("intent") === "search") {
-        return parseWithZod(formData, {
-          schema: addressSchema.pick({ zipcode: true }),
-        });
-      }
+export type DynamicFormProps = {
+  searchedAddress?: SearchedAddress;
+};
 
-      return parseWithZod(formData, {
-        schema: addressSchema,
-      });
-    },
-    shouldValidate: "onBlur",
-    defaultValue: {
-      zipcode: "",
-      address: address || "",
-    },
-    onSubmit(event, { formData }) {
-      event.preventDefault();
-      if (formData.get("intent") === "search") {
-        router.push(
-          `${paths.sampleDynamicForm.getHref()}?postalCode=${encodeURIComponent(String(fields.zipcode.value ?? ""))}`,
-        );
-      }
-    },
-  });
+export const DynamicForm = ({ searchedAddress }: DynamicFormProps) => {
+  const form = useFormMetadata();
+  const [name] = useField<string>("name");
+  const [zipcode] = useField<string>("zipcode");
+  const [address] = useField<string>("address");
 
   return (
     <form
       className="flex flex-col gap-4"
       {...getFormProps(form)}
-      action={action}
+      onSubmit={form.onSubmit}
     >
       <Section>
-        <Section.Header>住所を入力</Section.Header>
+        <Section.Header>個人情報の入力</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <Field>
-            <Field.Label htmlFor={fields.zipcode.id}>郵便番号</Field.Label>
-            <div className="flex gap-4">
-              <Input
-                className="w-30"
-                placeholder="1234567"
-                {...getInputProps(fields.zipcode, { type: "text" })}
-                key={fields.zipcode.key}
-              />
-              <Button type="submit" name="intent" value="search">
-                検索
-              </Button>
-            </div>
-            <ErrorText>{fields.zipcode.errors}</ErrorText>
+            <Field.Label htmlFor={name.id}>氏名</Field.Label>
+            <Input
+              placeholder="田中太郎"
+              {...getInputProps(name, { type: "text" })}
+              key={name.key}
+              defaultValue={name.value ?? name.initialValue}
+            />
+            <ErrorText>{name.errors}</ErrorText>
           </Field>
           <Field>
-            <Field.Label htmlFor={fields.address.id}>住所</Field.Label>
+            <Field.Label htmlFor={zipcode.id}>郵便番号</Field.Label>
+            <div className="flex gap-4">
+              <Input
+                placeholder="1234567"
+                {...getInputProps(zipcode, { type: "text" })}
+                key={zipcode.key}
+                defaultValue={searchedAddress?.zipcode ?? zipcode.initialValue}
+              />
+              <Button type="submit" name="intent" value="search">
+                住所検索
+              </Button>
+            </div>
+            <ErrorText>{zipcode.errors}</ErrorText>
+          </Field>
+          <Field>
+            <Field.Label htmlFor={address.id}>住所</Field.Label>
             <Input
-              {...getInputProps(fields.address, { type: "text" })}
-              key={fields.address.key}
-              disabled
+              {...getInputProps(address, { type: "text" })}
+              key={address.key}
+              defaultValue={
+                [
+                  searchedAddress?.address1,
+                  searchedAddress?.address2,
+                  searchedAddress?.address3,
+                ].join("") ?? address.initialValue
+              }
             />
-            <ErrorText>{fields.address.errors}</ErrorText>
+            <ErrorText>{address.errors}</ErrorText>
           </Field>
         </Section.Content>
       </Section>

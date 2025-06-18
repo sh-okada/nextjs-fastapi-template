@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { signUpSchema } from "@/lib/zod";
+import type { signUpSchema } from "@/lib/zod/schema";
 import type { z } from "zod";
 
 export type SignUpRequest = z.infer<typeof signUpSchema>;

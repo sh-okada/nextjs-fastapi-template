@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { zipcodeSchema } from "@/lib/zod";
+import type { zipcodeSchema } from "@/lib/zod/schema";
 import type { z } from "zod";
 
 export type SearchAddressRequest = z.infer<typeof zipcodeSchema>;
@@ -17,12 +17,15 @@ type Result = {
 
 export type SearchAddressResponse = {
   message?: string;
-  results: Result[];
+  results?: Result[];
   status: number;
 };
 
-export const searchAddress = async (data: SearchAddressRequest) =>
-  axiosInstance.get<SearchAddressResponse>("/search", {
+export const searchAddress = async (data: SearchAddressRequest) => {
+  const res = await axiosInstance.get<SearchAddressResponse>("/search", {
     baseURL: "https://zipcloud.ibsnet.co.jp/api",
     params: data,
   });
+
+  return res.data.results;
+};

@@ -8,7 +8,7 @@ import { Input } from "@/components/core/input";
 import { Link } from "@/components/core/link";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
-import { signUpSchema } from "@/lib/zod";
+import { signUpSchema } from "@/lib/zod/schema";
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useActionState } from "react";

@@ -1,7 +1,7 @@
 import { login } from "@/api/login/login";
 import { paths } from "@/config/paths";
-import { loginSchema } from "@/lib/zod";
-import NextAuth, { type NextAuthConfig } from "next-auth";
+import { loginSchema } from "@/lib/zod/schema";
+import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({

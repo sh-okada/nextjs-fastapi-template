@@ -2,8 +2,8 @@
 
 import { signup as signupApi } from "@/api/signup/signup";
 import { paths } from "@/config/paths";
-import { isBadRequestError, isUnAuthorizedError } from "@/lib/axios";
-import { signUpSchema } from "@/lib/zod";
+import { isBadRequestError } from "@/lib/axios";
+import { signUpSchema } from "@/lib/zod/schema";
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
 

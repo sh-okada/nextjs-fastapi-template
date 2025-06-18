@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { loginSchema } from "@/lib/zod";
+import type { loginSchema } from "@/lib/zod/schema";
 import type { z } from "zod";
 
 export type LoginResponse = {

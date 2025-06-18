@@ -8,9 +8,9 @@ export type DynamicFormContainerProps = {
 export const DynamicFormContainer = async ({
   zipcode,
 }: DynamicFormContainerProps) => {
-  const res = await searchAddress({ zipcode: "7310123" });
-  const address =
-    res.data.results.length > 0 ? res.data.results[0].address1 : "";
+  const results = zipcode
+    ? await searchAddress({ zipcode: zipcode })
+    : undefined;
 
-  return <DynamicForm address={address} />;
+  return <DynamicForm searchedAddress={results && { ...results[0] }} />;
 };
