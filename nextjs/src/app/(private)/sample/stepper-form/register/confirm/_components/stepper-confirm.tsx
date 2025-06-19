@@ -6,6 +6,7 @@ import { Input } from "@/components/core/input";
 import { Section } from "@/components/core/section/section";
 import type { SelectItems } from "@/components/core/select";
 import { Stepper } from "@/components/core/stepper/stepper";
+import { Tr } from "@/components/core/table/parts/tr";
 import { Table } from "@/components/core/table/table";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
@@ -53,28 +54,28 @@ export const StepperConfirm = ({
         <Section.Header>プロフィール</Section.Header>
         <Section.Content className="flex flex-col gap-4">
           <Table className="w-full">
-            <colgroup>
+            <Table.Colgroup>
               <Table.Col.HorizontalTh />
               <Table.Col.HorizontalTd />
-            </colgroup>
-            <tbody>
-              <tr>
+            </Table.Colgroup>
+            <Table.Tbody>
+              <Table.Tr.Horizontal>
                 <Table.Th.Horizontal>入社年月日</Table.Th.Horizontal>
-                <Table.Td.Horizontal>{selectJoiningDate}</Table.Td.Horizontal>
-              </tr>
-              <tr>
+                <Table.Td>{selectJoiningDate}</Table.Td>
+              </Table.Tr.Horizontal>
+              <Table.Tr.Horizontal>
                 <Table.Th.Horizontal>入社年数</Table.Th.Horizontal>
-                <Table.Td.Horizontal>{selectedYear}</Table.Td.Horizontal>
-              </tr>
-              <tr>
+                <Table.Td>{selectedYear}</Table.Td>
+              </Table.Tr.Horizontal>
+              <Table.Tr.Horizontal>
                 <Table.Th.Horizontal>部署</Table.Th.Horizontal>
-                <Table.Td.Horizontal>{selectedDepartment}</Table.Td.Horizontal>
-              </tr>
-              <tr>
+                <Table.Td>{selectedDepartment}</Table.Td>
+              </Table.Tr.Horizontal>
+              <Table.Tr.Horizontal>
                 <Table.Th.Horizontal>グレード</Table.Th.Horizontal>
-                <Table.Td.Horizontal>{selectedGrade}</Table.Td.Horizontal>
-              </tr>
-            </tbody>
+                <Table.Td>{selectedGrade}</Table.Td>
+              </Table.Tr.Horizontal>
+            </Table.Tbody>
           </Table>
         </Section.Content>
       </Section>

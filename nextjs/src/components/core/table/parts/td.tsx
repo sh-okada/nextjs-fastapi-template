@@ -1,15 +1,7 @@
-import type { ComponentProps, FunctionComponent } from "react";
-
-export const HorizonTalTd = ({ className = "", ...rest }: TdProps) => (
-  <th className={`px-4 py-5 align-top ${className}`} {...rest} />
-);
+import type { ComponentProps } from "react";
 
 export type TdProps = ComponentProps<"td">;
 
-export const Td: FunctionComponent<TdProps> & {
-  Horizontal: typeof HorizonTalTd;
-} = (props: TdProps) => {
-  return <th {...props} />;
+export const Td = ({ className = "", ...rest }: TdProps) => {
+  return <td className={`px-4 py-5 align-top ${className}`} {...rest} />;
 };
-
-Td.Horizontal = HorizonTalTd;

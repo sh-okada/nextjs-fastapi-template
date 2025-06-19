@@ -1,3 +1,11 @@
+import { Col } from "@/components/core/table/parts/col";
+import { Colgroup } from "@/components/core/table/parts/colgroup";
+import { Td } from "@/components/core/table/parts/td";
+import { Tbody } from "@/components/core/table/parts/tdoby";
+import { Th } from "@/components/core/table/parts/th";
+import { Thead } from "@/components/core/table/parts/thead";
+import { Tr } from "@/components/core/table/parts/tr";
+import { Table } from "@/components/core/table/table";
 import { A } from "@/components/ui-parts/markdown/parts/a";
 import { CodeBlock } from "@/components/ui-parts/markdown/parts/code-block";
 import { H1 } from "@/components/ui-parts/markdown/parts/h1";
