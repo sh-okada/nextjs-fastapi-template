@@ -1,5 +1,5 @@
+import { HumburgerMenu } from "@/app/(private)/_components/humburger-menu";
 import { LogoutButton } from "@/app/(private)/_components/logout-button";
-import { MobileMenu } from "@/app/(private)/_components/mobile-menu";
 
 export const Header = () => {
   return (
@@ -7,9 +7,9 @@ export const Header = () => {
       <div className="p-4">
         <h1>サンプルアプリ</h1>
       </div>
-      <MobileMenu>
+      <HumburgerMenu>
         <LogoutButton />
-      </MobileMenu>
+      </HumburgerMenu>
     </header>
   );
 };

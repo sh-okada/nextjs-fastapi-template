@@ -1,10 +1,10 @@
 "use server";
 
+import { parseWithZod } from "@conform-to/zod";
+import { redirect } from "next/navigation";
 // import { postProfile as postProfileApi } from "@/api/profile/profile";
 import { paths } from "@/config/paths";
 import { profileSchema } from "@/lib/zod/schema";
-import { parseWithZod } from "@conform-to/zod";
-import { redirect } from "next/navigation";
 
 export async function postProfile(_prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
@@ -17,5 +17,5 @@ export async function postProfile(_prevState: unknown, formData: FormData) {
 
   // await postProfileApi(submission.value);
 
-  redirect(paths.sampleStepperForm.register.complete.getHref());
+  redirect(paths.stepperFormRegister.register.complete.getHref());
 }

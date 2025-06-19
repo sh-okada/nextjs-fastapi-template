@@ -11,27 +11,25 @@ export const paths = {
     name: "新規登録",
     getHref: () => "/signup",
   },
-  sampleForm: {
+  simpleForm: {
     name: "シンプルなフォーム",
     getHref: () => "/sample/simple-form",
   },
-  sampleStepperForm: {
-    register: {
-      name: "ステップ形式のフォーム",
-      getHref: () => "/sample/stepper-form/register",
-      confirm: {
-        name: "ステップ形式のフォーム",
-        getHref: () => "/sample/stepper-form/register/confirm",
-      },
-      complete: {
-        name: "ステップ形式のフォーム",
-        getHref: () => "/sample/stepper-form/register/complete",
-      },
-    },
+  stepperFormRegister: {
+    name: "ステップ形式のフォーム",
+    getHref: () => "/sample/stepper-form/register",
   },
-  sampleDynamicForm: {
+  stepperFormConfirm: {
+    name: "ステップ形式のフォーム",
+    getHref: () => "/sample/stepper-form/register/confirm",
+  },
+  stepperFormComplete: {
+    name: "ステップ形式のフォーム",
+    getHref: () => "/sample/stepper-form/register/complete",
+  },
+  dynamicForm: {
     name: "動的なフォーム",
-    getHref: (query: { zipcode?: string }) =>
+    getHref: (query?: { zipcode?: string }) =>
       `/sample/dynamic-form?${new URLSearchParams(query).toString()}`,
   },
 } as const;

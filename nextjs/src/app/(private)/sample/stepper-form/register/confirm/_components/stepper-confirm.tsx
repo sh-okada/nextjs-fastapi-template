@@ -1,5 +1,6 @@
 "use client";
 
+import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
 import { Button } from "@/components/core/button";
 import { DatePicker } from "@/components/core/date-picker";
 import { Input } from "@/components/core/input";
@@ -10,7 +11,6 @@ import { Tr } from "@/components/core/table/parts/tr";
 import { Table } from "@/components/core/table/table";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
-import { getFormProps, useField, useFormMetadata } from "@conform-to/react";
 
 export type StepperConfirmProps = {
   yearItems: SelectItems;
@@ -83,7 +83,7 @@ export const StepperConfirm = ({
         この内容で登録する
       </Button>
       <Button className="text-center" variant="outline" asChild>
-        <InternalLink href={paths.sampleStepperForm.register.getHref()}>
+        <InternalLink href={paths.stepperFormRegister.getHref()}>
           入力内容を修正する
         </InternalLink>
       </Button>

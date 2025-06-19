@@ -1,3 +1,5 @@
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
 import { Col } from "@/components/core/table/parts/col";
 import { Colgroup } from "@/components/core/table/parts/colgroup";
 import { Td } from "@/components/core/table/parts/td";
@@ -16,33 +18,31 @@ import { H5 } from "@/components/ui-parts/markdown/parts/h5";
 import { H6 } from "@/components/ui-parts/markdown/parts/h6";
 import { Ol } from "@/components/ui-parts/markdown/parts/ol";
 import { Ul } from "@/components/ui-parts/markdown/parts/ul";
-import ReactMarkdown from "react-markdown";
-import remarkBreaks from "remark-breaks";
 
 export type MarkdownProps = {
-  body: string;
+	body: string;
 };
 
 export const Markdown = ({ body }: MarkdownProps) => {
-  const formatMarkdownText = body.replace(/^\s*$/gm, "&nbsp;\n");
+	const formatMarkdownText = body.replace(/^\s*$/gm, "&nbsp;\n");
 
-  return (
-    <ReactMarkdown
-      components={{
-        h1: H1,
-        h2: H2,
-        h3: H3,
-        h4: H4,
-        h5: H5,
-        h6: H6,
-        a: A,
-        ul: Ul,
-        ol: Ol,
-        code: CodeBlock,
-      }}
-      remarkPlugins={[remarkBreaks]}
-    >
-      {formatMarkdownText}
-    </ReactMarkdown>
-  );
+	return (
+		<ReactMarkdown
+			components={{
+				h1: H1,
+				h2: H2,
+				h3: H3,
+				h4: H4,
+				h5: H5,
+				h6: H6,
+				a: A,
+				ul: Ul,
+				ol: Ol,
+				code: CodeBlock,
+			}}
+			remarkPlugins={[remarkBreaks]}
+		>
+			{formatMarkdownText}
+		</ReactMarkdown>
+	);
 };

@@ -1,7 +1,7 @@
-import { auth } from "@/lib/auth";
 import axios from "axios";
 import camelcaseKeys from "camelcase-keys";
 import snakecaseKeys from "snakecase-keys";
+import { auth, signOut } from "@/lib/auth";
 
 export const axiosInstance = axios.create({
   baseURL: process.env.API_URL,
@@ -22,13 +22,21 @@ axiosInstance.interceptors.request.use(async (config) => {
   return config;
 });
 
-axiosInstance.interceptors.response.use((response) => {
-  if (response.data) {
-    response.data = camelcaseKeys(response.data, { deep: true });
-  }
+axiosInstance.interceptors.response.use(
+  (response) => {
+    if (response.data) {
+      response.data = camelcaseKeys(response.data, { deep: true });
+    }
 
-  return response;
-});
+    return response;
+  },
+  async (error) => {
+    if (isUnAuthorizedError(error)) {
+      await signOut();
+    }
+    return Promise.reject(error);
+  },
+);
 
 export const isUnAuthorizedError = (error: unknown) => {
   return axios.isAxiosError(error) && error.response?.status === 401;

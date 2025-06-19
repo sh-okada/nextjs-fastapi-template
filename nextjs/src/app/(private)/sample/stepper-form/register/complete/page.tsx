@@ -7,7 +7,7 @@ import { paths } from "@/config/paths";
 
 export default function Page() {
   return (
-    <PageContent title={paths.sampleStepperForm.register.confirm.name}>
+    <PageContent title={paths.stepperFormConfirm.name}>
       <div className="flex flex-col gap-8">
         <Stepper>
           <Stepper.Progress current={3} progress={3} />

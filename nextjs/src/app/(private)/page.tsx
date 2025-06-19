@@ -14,12 +14,16 @@ const markdownText = `
       - Next.js
     - バックエンド
       - FastAPI
+
+| a | b | c |
+| - | - | - |
+| 2 | 3 | 4 |
 `;
 
 export default async function Page() {
-  return (
-    <PageContent title={paths.home.name}>
-      <Markdown body={markdownText} />
-    </PageContent>
-  );
+	return (
+		<PageContent title={paths.home.name}>
+			<Markdown body={markdownText} />
+		</PageContent>
+	);
 }
