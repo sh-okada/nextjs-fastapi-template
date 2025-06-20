@@ -5,7 +5,7 @@ from sqlmodel import select
 
 from app.infra.db import db_models
 from app.infra.db.db import SessionDep
-from app.infra.query_service import query_models
+from app.infra.dto import query_models
 
 
 class DepartmentQueryService:

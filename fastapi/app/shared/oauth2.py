@@ -5,7 +5,7 @@ from fastapi.security import OAuth2PasswordBearer
 
 from app.infra.db import db_models
 from app.infra.db.db import SessionDep
-from app.infra.router import responses
+from app.infra.dto import responses
 from app.shared import jwt
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
@@ -21,10 +21,10 @@ def get_current_user(token: TokenDep, session: SessionDep):
             status_code=status.HTTP_401_UNAUTHORIZED,
             headers={"WWW-Authenticate": "Bearer"},
         )
-    return responses.UserResponse(
+    return responses.User(
         id=user.id,
         username=user.username,
     )
 
 
-CurrentUserDep = Annotated[responses.UserResponse, Depends(get_current_user)]
+CurrentUserDep = Annotated[responses.User, Depends(get_current_user)]
