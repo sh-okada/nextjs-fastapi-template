@@ -3,9 +3,9 @@ from typing import Annotated
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 
-from app.infra.db import db_models
-from app.infra.db.db import SessionDep
-from app.infra.dto import responses
+from app.infrastructure.db import db_models
+from app.infrastructure.db.db import SessionDep
+from app.interface import responses
 from app.shared import jwt
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")

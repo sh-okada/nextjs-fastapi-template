@@ -11,10 +11,10 @@ class UserWithAccessToken(User):
 
 
 class Grade(BaseModel):
-    id: int
+    id: str
     name: str
 
 
 class Department(BaseModel):
-    id: int
+    id: str
     name: str

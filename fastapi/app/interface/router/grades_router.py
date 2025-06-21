@@ -2,8 +2,8 @@ from typing import List
 
 from fastapi import APIRouter
 
-from app.infra.dto import responses
-from app.infra.query_service.grade_query_service import GradeQueryServiceDep
+from app.infrastructure.query_service.grade_query_service import GradeQueryServiceDep
+from app.interface import responses
 
 grades_router = APIRouter(prefix="/grades", tags=["grades"])
 

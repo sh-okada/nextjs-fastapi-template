@@ -5,9 +5,9 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import select
 
-from app.infra.db import db_models
-from app.infra.db.db import SessionDep
-from app.infra.dto import requests, responses
+from app.infrastructure.db import db_models
+from app.infrastructure.db.db import SessionDep
+from app.interface import requests, responses
 from app.shared import password
 from app.shared.jwt import create_access_token
 

@@ -23,14 +23,9 @@ def create_access_token(id: str):
 
 
 def decode_access_token(token: str) -> TokenData:
-    try:
-        payload = jwt.decode(
-            token,
-            key=env.JWT.SECRET_KEY,
-            algorithms=[env.JWT.ALGORITHM],
-        )
-        return TokenData(**payload)
-    except jwt.ExpiredSignatureError:
-        raise ValueError("Token has expired")
-    except jwt.InvalidTokenError:
-        raise ValueError("Invalid token")
+    payload = jwt.decode(
+        token,
+        key=env.JWT.SECRET_KEY,
+        algorithms=[env.JWT.ALGORITHM],
+    )
+    return TokenData(**payload)

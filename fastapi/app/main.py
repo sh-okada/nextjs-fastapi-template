@@ -1,14 +1,17 @@
 from contextlib import asynccontextmanager
 
-from fastapi import APIRouter, FastAPI
+import jwt
+from fastapi import APIRouter, FastAPI, Request, status
+from fastapi.responses import JSONResponse
+from pydantic import ValidationError
 from sqlmodel import Session
 
-from app.infra.db import db_models
-from app.infra.db.db import create_db_and_tables, engine
-from app.infra.router.auth import auth_router
-from app.infra.router.departments import departments_router
-from app.infra.router.grades import grades_router
-from app.infra.router.users import users_router
+from app.infrastructure.db import db_models
+from app.infrastructure.db.db import create_db_and_tables, engine
+from app.interface.router.auth_router import auth_router
+from app.interface.router.departments_router import departments_router
+from app.interface.router.grades_router import grades_router
+from app.interface.router.users_router import users_router
 
 grades = [
     db_models.Grade(name="S1"),
@@ -59,3 +62,13 @@ api_router.include_router(departments_router)
 api_router.include_router(grades_router)
 
 app.include_router(api_router)
+
+
+@app.exception_handler(ValidationError)
+def validation_error_handler(request: Request, exc: ValidationError):
+    return JSONResponse(status_code=status.HTTP_400_BAD_REQUEST, content=None)
+
+
+@app.exception_handler(jwt.PyJWTError)
+def py_jwt_error_handler(request: Request, exc: jwt.PyJWTError):
+    return JSONResponse(status_code=status.HTTP_401_UNAUTHORIZED, content=None)

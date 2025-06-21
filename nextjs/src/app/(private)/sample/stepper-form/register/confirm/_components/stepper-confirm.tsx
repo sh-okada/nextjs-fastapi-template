@@ -13,89 +13,89 @@ import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
 
 export type StepperConfirmProps = {
-  yearItems: SelectItems;
-  departmentItems: SelectItems;
-  gradeItems: SelectItems;
+	yearItems: SelectItems<number>;
+	departmentItems: SelectItems<string>;
+	gradeItems: SelectItems<string>;
 };
 
 export const StepperConfirm = ({
-  yearItems,
-  departmentItems,
-  gradeItems,
+	yearItems,
+	departmentItems,
+	gradeItems,
 }: StepperConfirmProps) => {
-  const form = useFormMetadata();
-  const [joiningDate] = useField<Date>("joiningDate");
-  const [years] = useField<string>("years");
-  const [department] = useField<string>("department");
-  const [grade] = useField<string>("grade");
+	const form = useFormMetadata();
+	const [joiningDate] = useField<Date>("joiningDate");
+	const [years] = useField<number>("years");
+	const [department] = useField<string>("department");
+	const [grade] = useField<string>("grade");
 
-  const selectJoiningDate = joiningDate.value;
-  const selectedYear = yearItems.find(
-    (item) => item.value === years.value,
-  )?.label;
-  const selectedDepartment = departmentItems.find(
-    (item) => item.value === department.value,
-  )?.label;
-  const selectedGrade = gradeItems.find(
-    (item) => item.value === grade.value,
-  )?.label;
+	const selectJoiningDate = joiningDate.value;
+	const selectedYear = yearItems.find(
+		(item) => item.value === Number(years.value),
+	)?.label;
+	const selectedDepartment = departmentItems.find(
+		(item) => item.value === department.value,
+	)?.label;
+	const selectedGrade = gradeItems.find(
+		(item) => item.value === grade.value,
+	)?.label;
 
-  return (
-    <form
-      className="flex flex-col gap-8"
-      {...getFormProps(form)}
-      onSubmit={form.onSubmit}
-    >
-      <Stepper>
-        <Stepper.Progress current={2} progress={3} />
-        <Stepper.Header>入力内容の確認</Stepper.Header>
-      </Stepper>
-      <Section>
-        <Section.Header>プロフィール</Section.Header>
-        <Section.Content className="flex flex-col gap-4">
-          <Table className="w-full">
-            <Table.Colgroup>
-              <Table.Col.HorizontalTh />
-              <Table.Col.HorizontalTd />
-            </Table.Colgroup>
-            <Table.Tbody>
-              <Table.Tr.Horizontal>
-                <Table.Th.Horizontal>入社年月日</Table.Th.Horizontal>
-                <Table.Td>{selectJoiningDate}</Table.Td>
-              </Table.Tr.Horizontal>
-              <Table.Tr.Horizontal>
-                <Table.Th.Horizontal>入社年数</Table.Th.Horizontal>
-                <Table.Td>{selectedYear}</Table.Td>
-              </Table.Tr.Horizontal>
-              <Table.Tr.Horizontal>
-                <Table.Th.Horizontal>部署</Table.Th.Horizontal>
-                <Table.Td>{selectedDepartment}</Table.Td>
-              </Table.Tr.Horizontal>
-              <Table.Tr.Horizontal>
-                <Table.Th.Horizontal>グレード</Table.Th.Horizontal>
-                <Table.Td>{selectedGrade}</Table.Td>
-              </Table.Tr.Horizontal>
-            </Table.Tbody>
-          </Table>
-        </Section.Content>
-      </Section>
-      <Button className="w-full" type="submit" name="intent" value="submit">
-        この内容で登録する
-      </Button>
-      <Button className="text-center" variant="outline" asChild>
-        <InternalLink href={paths.stepperFormRegister.getHref()}>
-          入力内容を修正する
-        </InternalLink>
-      </Button>
-      <DatePicker
-        name={joiningDate.name}
-        value={joiningDate.value}
-        readOnly
-        hidden
-      />
-      <Input name={years.name} value={years.value} readOnly hidden />
-      <Input name={department.name} value={department.value} readOnly hidden />
-      <Input name={grade.name} value={grade.value} readOnly hidden />
-    </form>
-  );
+	return (
+		<form
+			className="flex flex-col gap-8"
+			{...getFormProps(form)}
+			onSubmit={form.onSubmit}
+		>
+			<Stepper>
+				<Stepper.Progress current={2} progress={3} />
+				<Stepper.Header>入力内容の確認</Stepper.Header>
+			</Stepper>
+			<Section>
+				<Section.Header>プロフィール</Section.Header>
+				<Section.Content className="flex flex-col gap-4">
+					<Table className="w-full">
+						<Table.Colgroup>
+							<Table.Col.HorizontalTh />
+							<Table.Col.HorizontalTd />
+						</Table.Colgroup>
+						<Table.Tbody>
+							<Table.Tr.Horizontal>
+								<Table.Th.Horizontal>入社年月日</Table.Th.Horizontal>
+								<Table.Td>{selectJoiningDate}</Table.Td>
+							</Table.Tr.Horizontal>
+							<Table.Tr.Horizontal>
+								<Table.Th.Horizontal>入社年数</Table.Th.Horizontal>
+								<Table.Td>{selectedYear}</Table.Td>
+							</Table.Tr.Horizontal>
+							<Table.Tr.Horizontal>
+								<Table.Th.Horizontal>部署</Table.Th.Horizontal>
+								<Table.Td>{selectedDepartment}</Table.Td>
+							</Table.Tr.Horizontal>
+							<Table.Tr.Horizontal>
+								<Table.Th.Horizontal>グレード</Table.Th.Horizontal>
+								<Table.Td>{selectedGrade}</Table.Td>
+							</Table.Tr.Horizontal>
+						</Table.Tbody>
+					</Table>
+				</Section.Content>
+			</Section>
+			<Button className="w-full" type="submit" name="intent" value="submit">
+				この内容で登録する
+			</Button>
+			<Button className="text-center" variant="outline" asChild>
+				<InternalLink href={paths.stepperFormRegister.getHref()}>
+					入力内容を修正する
+				</InternalLink>
+			</Button>
+			<DatePicker
+				name={joiningDate.name}
+				value={joiningDate.value}
+				readOnly
+				hidden
+			/>
+			<Input name={years.name} value={years.value} readOnly hidden />
+			<Input name={department.name} value={department.value} readOnly hidden />
+			<Input name={grade.name} value={grade.value} readOnly hidden />
+		</form>
+	);
 };

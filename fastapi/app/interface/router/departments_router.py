@@ -3,8 +3,10 @@ from typing import List
 
 from fastapi import APIRouter
 
-from app.infra.dto import responses
-from app.infra.query_service.department_query_service import DepartmentQueryServiceDep
+from app.infrastructure.query_service.department_query_service import (
+    DepartmentQueryServiceDep,
+)
+from app.interface import responses
 
 departments_router = APIRouter(prefix="/departments", tags=["departments"])
 
