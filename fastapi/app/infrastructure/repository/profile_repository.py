@@ -13,9 +13,11 @@ class ProfileRepository(IProfileRepository):
 
     def create(self, profile):
         user_profile = db_models.UserProfile(
-            user_id=str(profile.user_id),
-            grade_id=str(profile.grade_id),
-            department_id=str(profile.department_id),
+            user_id=str(profile.user_id.root),
+            years=profile.years.root,
+            joining_date=profile.joining_date.root,
+            grade_id=str(profile.grade_id.root),
+            department_id=str(profile.department_id.root),
         )
 
         self.__session.add(user_profile)

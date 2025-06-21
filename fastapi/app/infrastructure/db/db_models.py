@@ -1,4 +1,5 @@
 import uuid
+from datetime import date
 from typing import List
 
 from sqlmodel import Field, Relationship, SQLModel
@@ -37,6 +38,8 @@ class User(SQLModel, table=True):
 
 class UserProfile(SQLModel, table=True):
     user_id: str = Field(primary_key=True, foreign_key="user.id")
+    years: int = Field(nullable=False)
+    joining_date: date = Field(nullable=False)
     grade_id: str = Field(default=None, foreign_key="grade.id")
     department_id: str = Field(default=None, foreign_key="department.id")
 
