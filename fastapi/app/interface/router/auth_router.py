@@ -25,7 +25,7 @@ def login(
 
     if user is None:
         raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
+            status_code=status.HTTP_400_BAD_REQUEST,
         )
 
     if not password.verify_password(form_data.password, user.password):

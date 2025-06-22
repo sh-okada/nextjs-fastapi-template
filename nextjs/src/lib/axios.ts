@@ -40,12 +40,16 @@ axiosInstance.interceptors.response.use(
 	},
 );
 
+export const isBadRequestError = (error: unknown) => {
+	return axios.isAxiosError(error) && error.response?.status === 400;
+};
+
 export const isUnAuthorizedError = (error: unknown) => {
 	return axios.isAxiosError(error) && error.response?.status === 401;
 };
 
-export const isBadRequestError = (error: unknown) => {
-	return axios.isAxiosError(error) && error.response?.status === 400;
+export const isConflictError = (error: unknown) => {
+	return axios.isAxiosError(error) && error.response?.status === 409;
 };
 
 const isPlainObject = (value: unknown) => {
