@@ -1,7 +1,7 @@
 import uuid
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, Response, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlmodel import select
 
@@ -33,10 +33,10 @@ def login(
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
 
-    access_token = create_access_token(user.id)
+    access_token = create_access_token(str(user.id))
 
     return responses.UserWithAccessToken(
-        id=user.id,
+        id=str(user.id),
         username=user.username,
         access_token=access_token,
     )
@@ -54,10 +54,12 @@ def signUp(form_data: requests.SignUp, session: SessionDep):
         )
 
     user = db_models.User(
-        id=str(uuid.uuid4()),
+        id=uuid.uuid4(),
         username=form_data.username,
         password=password.get_password_hash(form_data.password.get_secret_value()),
     )
 
     session.add(user)
     session.commit()
+
+    return Response(status_code=status.HTTP_201_CREATED)
