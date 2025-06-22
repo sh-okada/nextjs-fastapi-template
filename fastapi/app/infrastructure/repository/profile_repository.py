@@ -1,9 +1,14 @@
-import uuid
 from typing import Annotated
 
 from fastapi import Depends
 
+from app.domain.entity.profile import Profile
 from app.domain.repository.profile_repository import IProfileRepository
+from app.domain.value_object.department_id import DepartmentId
+from app.domain.value_object.grade_id import GradeId
+from app.domain.value_object.joining_date import JoiningDate
+from app.domain.value_object.user_id import UserId
+from app.domain.value_object.years import Years
 from app.infrastructure.db import db_models
 from app.infrastructure.db.db import SessionDep
 
@@ -12,11 +17,21 @@ class ProfileRepository(IProfileRepository):
     def __init__(self, session: SessionDep):
         self.__session = session
 
-    def create(self, profile):
-        current_user_profile = self.__get_current_user_profile(profile.user_id.root)
-        if current_user_profile:
-            self.__session.delete(current_user_profile)
+    def find(self, user_id) -> Profile | None:
+        user_profile = self.__session.get(db_models.UserProfile, user_id.root)
 
+        if user_profile is None:
+            return None
+
+        return Profile(
+            user_id=UserId(user_profile.user_id),
+            joining_date=JoiningDate(user_profile.joining_date),
+            years=Years(user_profile.years),
+            department_id=DepartmentId(user_profile.department_id),
+            grade_id=GradeId(user_profile.grade_id),
+        )
+
+    def create(self, profile):
         user_profile = db_models.UserProfile(
             user_id=profile.user_id.root,
             years=profile.years.root,
@@ -27,11 +42,6 @@ class ProfileRepository(IProfileRepository):
 
         self.__session.add(user_profile)
         self.__session.commit()
-
-    def __get_current_user_profile(
-        self, user_id: uuid.UUID
-    ) -> db_models.UserProfile | None:
-        return self.__session.get(db_models.UserProfile, user_id)
 
 
 ProfileRepositoryDep = Annotated[ProfileRepository, Depends()]
