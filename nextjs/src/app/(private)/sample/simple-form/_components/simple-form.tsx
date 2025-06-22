@@ -72,8 +72,10 @@ export const SimpleForm = ({
 						<ErrorText>{fields.years.errors}</ErrorText>
 					</Field>
 					<Field>
-						<Field.Label htmlFor={fields.department.id}>部署を選択</Field.Label>
-						<Select {...getSelectProps(fields.department)}>
+						<Field.Label htmlFor={fields.department_id.id}>
+							部署を選択
+						</Field.Label>
+						<Select {...getSelectProps(fields.department_id)}>
 							<Select.Item value="" hidden>
 								選択してください
 							</Select.Item>
@@ -83,7 +85,7 @@ export const SimpleForm = ({
 								</Select.Item>
 							))}
 						</Select>
-						<ErrorText>{fields.department.errors}</ErrorText>
+						<ErrorText>{fields.department_id.errors}</ErrorText>
 					</Field>
 					<Fieldset>
 						<Fieldset.Legend>グレードを選択</Fieldset.Legend>
@@ -91,15 +93,15 @@ export const SimpleForm = ({
 							{gradeItems.map((grade) => (
 								<Radio
 									key={grade.value}
-									name={fields.grade.name}
+									name={fields.grade_id.name}
 									value={grade.value}
-									defaultChecked={fields.grade.initialValue === grade.value}
+									defaultChecked={fields.grade_id.initialValue === grade.value}
 								>
 									{grade.label}
 								</Radio>
 							))}
 						</RadioGroup>
-						<ErrorText>{fields.grade.errors}</ErrorText>
+						<ErrorText>{fields.grade_id.errors}</ErrorText>
 					</Fieldset>
 				</Section.Content>
 			</Section>

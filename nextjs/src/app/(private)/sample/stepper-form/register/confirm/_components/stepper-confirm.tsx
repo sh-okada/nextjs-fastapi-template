@@ -26,18 +26,18 @@ export const StepperConfirm = ({
 	const form = useFormMetadata();
 	const [joiningDate] = useField<Date>("joiningDate");
 	const [years] = useField<number>("years");
-	const [department] = useField<string>("department");
-	const [grade] = useField<string>("grade");
+	const [department_id] = useField<string>("department_id");
+	const [grade_id] = useField<string>("grade_id");
 
 	const selectJoiningDate = joiningDate.value;
 	const selectedYear = yearItems.find(
 		(item) => item.value === Number(years.value),
 	)?.label;
 	const selectedDepartment = departmentItems.find(
-		(item) => item.value === department.value,
+		(item) => item.value === department_id.value,
 	)?.label;
 	const selectedGrade = gradeItems.find(
-		(item) => item.value === grade.value,
+		(item) => item.value === grade_id.value,
 	)?.label;
 
 	return (
@@ -94,8 +94,13 @@ export const StepperConfirm = ({
 				hidden
 			/>
 			<Input name={years.name} value={years.value} readOnly hidden />
-			<Input name={department.name} value={department.value} readOnly hidden />
-			<Input name={grade.name} value={grade.value} readOnly hidden />
+			<Input
+				name={department_id.name}
+				value={department_id.value}
+				readOnly
+				hidden
+			/>
+			<Input name={grade_id.name} value={grade_id.value} readOnly hidden />
 		</form>
 	);
 };

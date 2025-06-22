@@ -32,8 +32,8 @@ export const StepperForm = ({
 	const form = useFormMetadata();
 	const [joiningDate] = useField<Date>("joiningDate");
 	const [years] = useField<number>("years");
-	const [department] = useField<string>("department");
-	const [grade] = useField<string>("grade");
+	const [department_id] = useField<string>("department_id");
+	const [grade_id] = useField<string>("grade_id");
 
 	return (
 		<form
@@ -75,10 +75,10 @@ export const StepperForm = ({
 						<ErrorText>{years.errors}</ErrorText>
 					</Field>
 					<Field>
-						<Field.Label htmlFor={department.id}>部署を選択</Field.Label>
+						<Field.Label htmlFor={department_id.id}>部署を選択</Field.Label>
 						<Select
-							{...getSelectProps(department)}
-							defaultValue={department.value ?? department.initialValue}
+							{...getSelectProps(department_id)}
+							defaultValue={department_id.value ?? department_id.initialValue}
 						>
 							<Select.Item value="" hidden>
 								選択してください
@@ -89,7 +89,7 @@ export const StepperForm = ({
 								</Select.Item>
 							))}
 						</Select>
-						<ErrorText>{department.errors}</ErrorText>
+						<ErrorText>{department_id.errors}</ErrorText>
 					</Field>
 					<Fieldset>
 						<Fieldset.Legend>グレードを選択</Fieldset.Legend>
@@ -97,18 +97,18 @@ export const StepperForm = ({
 							{gradeItems.map((item) => (
 								<Radio
 									key={item.value}
-									name={grade.name}
+									name={grade_id.name}
 									value={item.value}
 									defaultChecked={
-										grade.value === item.value ||
-										grade.initialValue === item.value
+										grade_id.value === item.value ||
+										grade_id.initialValue === item.value
 									}
 								>
 									{item.label}
 								</Radio>
 							))}
 						</RadioGroup>
-						<ErrorText>{grade.errors}</ErrorText>
+						<ErrorText>{grade_id.errors}</ErrorText>
 					</Fieldset>
 				</Section.Content>
 			</Section>

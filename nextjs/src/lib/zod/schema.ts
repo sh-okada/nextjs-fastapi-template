@@ -23,9 +23,9 @@ const years = z
 	.number({ message: message.required("入社年数") })
 	.min(1, { message: message.required("入社年数") });
 
-const department = z.string({ message: message.required("部署") });
+const department_id = z.string({ message: message.required("部署") });
 
-const grade = z.string({ message: message.required("グレード") });
+const grade_id = z.string({ message: message.required("グレード") });
 
 const name = z
 	.string({ message: message.required("氏名") })
@@ -54,8 +54,8 @@ export const signUpSchema = z.object({
 export const profileSchema = z.object({
 	joiningDate: joiningDate,
 	years: years,
-	department: department,
-	grade: grade,
+	department_id: department_id,
+	grade_id: grade_id,
 });
 
 export const zipcodeSchema = z.object({

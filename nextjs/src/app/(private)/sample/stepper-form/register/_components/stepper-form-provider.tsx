@@ -9,33 +9,33 @@ import { paths } from "@/config/paths";
 import { profileSchema } from "@/lib/zod/schema";
 
 export type StepperFormProviderProps = {
-  children: ReactNode;
+	children: ReactNode;
 };
 
 export const StepperFormProvider = ({ children }: StepperFormProviderProps) => {
-  const router = useRouter();
-  const [lastResult, action] = useActionState(postProfile, null);
-  const [form] = useForm({
-    lastResult,
-    onValidate({ formData }) {
-      return parseWithZod(formData, { schema: profileSchema });
-    },
-    shouldValidate: "onBlur",
-    onSubmit(event, { formData }) {
-      event.preventDefault();
+	const router = useRouter();
+	const [lastResult, action] = useActionState(postProfile, null);
+	const [form] = useForm({
+		lastResult,
+		onValidate({ formData }) {
+			return parseWithZod(formData, { schema: profileSchema });
+		},
+		shouldValidate: "onBlur",
+		onSubmit(event, { formData }) {
+			event.preventDefault();
 
-      switch (formData.get("intent")) {
-        case "confirm":
-          router.push(paths.stepperFormConfirm.getHref());
-          break;
-        case "submit":
-          startTransition(async () => {
-            action(formData);
-          });
-          break;
-      }
-    },
-  });
+			switch (formData.get("intent")) {
+				case "confirm":
+					router.push(paths.stepperFormConfirm.getHref());
+					break;
+				case "submit":
+					startTransition(async () => {
+						action(formData);
+					});
+					break;
+			}
+		},
+	});
 
-  return <FormProvider context={form.context}>{children}</FormProvider>;
+	return <FormProvider context={form.context}>{children}</FormProvider>;
 };
