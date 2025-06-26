@@ -6,5 +6,5 @@ export const SectionHeader = ({
   className = "",
   ...rest
 }: SectionHeaderProps) => {
-  return <h2 className={`text-xl ${className}`} {...rest} />;
+  return <h2 className={`text-[36px] ${className}`} {...rest} />;
 };

@@ -1,48 +1,57 @@
+import { MdCheckbox } from "@/components/ui-parts/markdown/parts/md-checkbox";
+import { MdCodeBlock } from "@/components/ui-parts/markdown/parts/md-code-block";
+import { MdH1 } from "@/components/ui-parts/markdown/parts/md-h1";
+import { MdH2 } from "@/components/ui-parts/markdown/parts/md-h2";
+import { MdH3 } from "@/components/ui-parts/markdown/parts/md-h3";
+import { MdH4 } from "@/components/ui-parts/markdown/parts/md-h4";
+import { MdH5 } from "@/components/ui-parts/markdown/parts/md-h5";
+import { MdH6 } from "@/components/ui-parts/markdown/parts/md-h6";
+import { MdLink } from "@/components/ui-parts/markdown/parts/md-link";
+import { MdOl } from "@/components/ui-parts/markdown/parts/md-ol";
+import { MdTable } from "@/components/ui-parts/markdown/parts/md-table";
+import { MdTbody } from "@/components/ui-parts/markdown/parts/md-tbody";
+import { MdTd } from "@/components/ui-parts/markdown/parts/md-td";
+import { MdTh } from "@/components/ui-parts/markdown/parts/md-th";
+import { MdThead } from "@/components/ui-parts/markdown/parts/md-thead";
+import { MdTr } from "@/components/ui-parts/markdown/parts/md-tr";
+import { MdUl } from "@/components/ui-parts/markdown/parts/md-ul";
 import ReactMarkdown from "react-markdown";
 import remarkBreaks from "remark-breaks";
-import { Col } from "@/components/core/table/parts/col";
-import { Colgroup } from "@/components/core/table/parts/colgroup";
-import { Td } from "@/components/core/table/parts/td";
-import { Tbody } from "@/components/core/table/parts/tdoby";
-import { Th } from "@/components/core/table/parts/th";
-import { Thead } from "@/components/core/table/parts/thead";
-import { Tr } from "@/components/core/table/parts/tr";
-import { Table } from "@/components/core/table/table";
-import { A } from "@/components/ui-parts/markdown/parts/a";
-import { CodeBlock } from "@/components/ui-parts/markdown/parts/code-block";
-import { H1 } from "@/components/ui-parts/markdown/parts/h1";
-import { H2 } from "@/components/ui-parts/markdown/parts/h2";
-import { H3 } from "@/components/ui-parts/markdown/parts/h3";
-import { H4 } from "@/components/ui-parts/markdown/parts/h4";
-import { H5 } from "@/components/ui-parts/markdown/parts/h5";
-import { H6 } from "@/components/ui-parts/markdown/parts/h6";
-import { Ol } from "@/components/ui-parts/markdown/parts/ol";
-import { Ul } from "@/components/ui-parts/markdown/parts/ul";
+import remarkGfm from "remark-gfm";
 
 export type MarkdownProps = {
-	body: string;
+  body: string;
 };
 
 export const Markdown = ({ body }: MarkdownProps) => {
-	const formatMarkdownText = body.replace(/^\s*$/gm, "&nbsp;\n");
-
-	return (
-		<ReactMarkdown
-			components={{
-				h1: H1,
-				h2: H2,
-				h3: H3,
-				h4: H4,
-				h5: H5,
-				h6: H6,
-				a: A,
-				ul: Ul,
-				ol: Ol,
-				code: CodeBlock,
-			}}
-			remarkPlugins={[remarkBreaks]}
-		>
-			{formatMarkdownText}
-		</ReactMarkdown>
-	);
+  return (
+    <ReactMarkdown
+      components={{
+        h1: MdH1,
+        h2: MdH2,
+        h3: MdH3,
+        h4: MdH4,
+        h5: MdH5,
+        h6: MdH6,
+        a: MdLink,
+        ul: MdUl,
+        ol: MdOl,
+        code: MdCodeBlock,
+        table: MdTable,
+        thead: MdThead,
+        tbody: MdTbody,
+        tr: MdTr,
+        th: MdTh,
+        td: MdTd,
+        input: ({ checked, ...props }) => {
+          if (props.type === "checkbox") {
+            return <MdCheckbox checked={checked} {...props} />;
+          }
+        },
+      }}
+      remarkPlugins={[remarkGfm, remarkBreaks]}
+    >
+      {body}
+    </ReactMarkdown>
+  );
 };

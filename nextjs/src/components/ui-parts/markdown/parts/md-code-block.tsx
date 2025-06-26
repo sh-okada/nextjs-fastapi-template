@@ -1,16 +1,16 @@
 import type { ComponentProps } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { prism } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-export type CodeBlockProps = ComponentProps<"code"> & {
+export type MdCodeBlockProps = ComponentProps<"code"> & {
   inline?: boolean;
 };
 
-export const CodeBlock = ({
+export const MdCodeBlock = ({
   inline = false,
   className,
   children,
-}: CodeBlockProps) => {
+}: MdCodeBlockProps) => {
   if (inline) {
     return <code className={className}>{children}</code>;
   }
@@ -23,7 +23,7 @@ export const CodeBlock = ({
   const lang = match[1] ?? undefined;
 
   return (
-    <SyntaxHighlighter style={prism} language={lang}>
+    <SyntaxHighlighter style={vscDarkPlus} language={lang}>
       {String(children).replace(/\n$/, "")}
     </SyntaxHighlighter>
   );

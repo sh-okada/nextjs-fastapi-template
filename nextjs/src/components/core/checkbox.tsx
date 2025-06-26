@@ -1,5 +1,5 @@
 import { Label } from "@/components/core/label";
-import type { ComponentProps } from "react";
+import type { ComponentProps, FunctionComponent } from "react";
 
 export const checkboxBaseStyle = `
   appearance-none
@@ -14,25 +14,35 @@ export const checkboxBaseStyle = `
   aria-[invalid=true]:border-red-900 aria-[invalid=true]:checked:bg-red-900
 `;
 
-export type CheckboxProps = Omit<ComponentProps<"input">, "type"> & {
+type CheckBoxInputProps = Omit<ComponentProps<"input">, "type"> & {
   isError?: boolean;
 };
 
-export const Checkbox = ({
+const CheckBoxInput = ({
   isError,
   className = "",
-  children,
   ...rest
-}: CheckboxProps) => {
+}: CheckBoxInputProps) => {
+  return (
+    <input
+      className={`${checkboxBaseStyle} ${className}`}
+      type="checkbox"
+      aria-invalid={isError || undefined}
+      {...rest}
+    />
+  );
+};
+export type CheckboxProps = CheckBoxInputProps;
+
+export const Checkbox: FunctionComponent<CheckboxProps> & {
+  Input: typeof CheckBoxInput;
+} = ({ isError, className = "", children, ...rest }: CheckboxProps) => {
   return (
     <Label className="flex items-center gap-2">
-      <input
-        className={`${checkboxBaseStyle} ${className}`}
-        type="checkbox"
-        aria-invalid={isError || undefined}
-        {...rest}
-      />
+      <CheckBoxInput isError={isError} className={className} {...rest} />
       <span>{children}</span>
     </Label>
   );
 };
+
+Checkbox.Input = CheckBoxInput;
