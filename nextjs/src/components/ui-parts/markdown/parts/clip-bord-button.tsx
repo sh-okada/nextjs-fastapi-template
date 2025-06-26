@@ -1,14 +1,18 @@
 "use client";
 
-import { Button } from "@/components/core/button";
+import { Button, type ButtonProps } from "@/components/core/button";
 import { type ReactNode, useRef, useState } from "react";
 
-type ClipBordButtonProps = {
+type ClipBordButtonProps = Omit<ButtonProps, "children" | "onClick"> & {
   text: string;
   children: (cliped: boolean) => ReactNode;
 };
 
-export const ClipBordButton = ({ text, children }: ClipBordButtonProps) => {
+export const ClipBordButton = ({
+  text,
+  children,
+  ...rest
+}: ClipBordButtonProps) => {
   const [cliped, setCliped] = useState(false);
   const timeRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -30,7 +34,7 @@ export const ClipBordButton = ({ text, children }: ClipBordButtonProps) => {
   };
 
   return (
-    <Button className="absolute top-2 right-2" onClick={handleClick}>
+    <Button onClick={handleClick} {...rest}>
       {children(cliped)}
     </Button>
   );

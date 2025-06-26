@@ -34,7 +34,7 @@ export const MdCodeBlock = ({
       <SyntaxHighlighter style={vscDarkPlus} language={lang}>
         {text}
       </SyntaxHighlighter>
-      <ClipBordButton text={text}>
+      <ClipBordButton className="absolute top-1 right-1" text={text}>
         {(cliped) => (cliped ? <FaClipboardCheck /> : <FaClipboard />)}
       </ClipBordButton>
     </div>

@@ -38,15 +38,16 @@ const markdownText = `
 [Next.js](https://nextjs.org/)
 [FastAPI](https://fastapi.tiangolo.com/)
 
-## 引用
-> これは引用です。
-
 ## コードブロック
 ~~~typescript
 // コメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメントコメント
 export const Input = (props: React.ComponentProps<"input">) => {
   return <input {...props} />;
 }
+~~~
+
+~~~bash
+echo "Hello, World!"
 ~~~
 
 ## テーブル
