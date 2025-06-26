@@ -1,13 +1,13 @@
 "use client";
 
-import { usePathname } from "next/navigation";
-import { type ReactNode, type RefObject, useEffect, useRef } from "react";
-import { FaBars, FaXmark } from "react-icons/fa6";
 import { Button } from "@/components/core/button";
 import { FullDrawer } from "@/components/core/drawer/full-drawer";
 import { Container } from "@/components/ui-parts/container";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
+import { usePathname } from "next/navigation";
+import { type ReactNode, useEffect, useRef } from "react";
+import { FaBars, FaXmark } from "react-icons/fa6";
 
 const menuItems = [
   {

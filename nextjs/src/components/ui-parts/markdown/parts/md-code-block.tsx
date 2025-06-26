@@ -1,4 +1,10 @@
+"use client";
+
+import { ClipBordButton } from "@/components/ui-parts/markdown/parts/clip-bord-button";
 import type { ComponentProps } from "react";
+import { FaClipboard } from "react-icons/fa6";
+import { FaClipboardCheck } from "react-icons/fa6";
+
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 
@@ -21,10 +27,16 @@ export const MdCodeBlock = ({
   }
 
   const lang = match[1] ?? undefined;
+  const text = String(children).replace(/\n$/, "");
 
   return (
-    <SyntaxHighlighter style={vscDarkPlus} language={lang}>
-      {String(children).replace(/\n$/, "")}
-    </SyntaxHighlighter>
+    <div className="relative">
+      <SyntaxHighlighter style={vscDarkPlus} language={lang}>
+        {text}
+      </SyntaxHighlighter>
+      <ClipBordButton text={text}>
+        {(cliped) => (cliped ? <FaClipboardCheck /> : <FaClipboard />)}
+      </ClipBordButton>
+    </div>
   );
 };
