@@ -7,4 +7,4 @@ COPY . /workspace/fastapi
 WORKDIR /workspace/fastapi
 RUN uv sync
 
-CMD [".venv/bin/fastapi", "run", "--host", "0.0.0.0"]
+CMD [".venv/bin/fastapi", "dev", "--host", "0.0.0.0"]
