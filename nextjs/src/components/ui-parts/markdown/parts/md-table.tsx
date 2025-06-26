@@ -1,9 +1,6 @@
 import { Table, type TableProps } from "@/components/core/table/table";
+import { PiDropSimpleBold } from "react-icons/pi";
 
-export const MdTable = ({ className = "", ...rest }: TableProps) => {
-  return (
-    <div className="overflow-x-auto">
-      <Table className={`w-full min-w-3xl ${className}`} {...rest} />
-    </div>
-  );
+export const MdTable = (props: TableProps) => {
+  return <Table {...PiDropSimpleBold} />;
 };
