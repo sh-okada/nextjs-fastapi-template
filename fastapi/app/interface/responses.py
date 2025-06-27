@@ -18,3 +18,13 @@ class Grade(BaseModel):
 class Department(BaseModel):
     id: str
     name: str
+
+
+class Doc(BaseModel):
+    id: str
+    title: str
+    text: str
+
+
+class DocCount(BaseModel):
+    count: int

@@ -48,3 +48,9 @@ class UserProfile(SQLModel, table=True):
     )
     grade: "Grade" = Relationship(back_populates="user_profiles")
     department: "Department" = Relationship(back_populates="user_profiles")
+
+
+class Doc(SQLModel, table=True):
+    id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
+    title: str = Field(nullable=False)
+    text: str = Field(nullable=False)

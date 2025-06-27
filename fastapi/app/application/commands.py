@@ -9,3 +9,14 @@ class PostProfile:
     years: int
     department_id: str
     grade_id: str
+
+
+@dataclass
+class GetDocs:
+    page: int
+    limit: int
+
+
+@dataclass
+class GetDoc:
+    id: str

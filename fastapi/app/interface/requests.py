@@ -1,5 +1,8 @@
+import uuid
 from datetime import date
+from typing import Annotated
 
+from fastapi import Query
 from pydantic import BaseModel, Field, SecretStr
 
 
@@ -13,3 +16,17 @@ class PostProfile(BaseModel):
     years: int = Field(..., min=1, max=100)
     department_id: str = Field(..., min_length=1, max_length=100)
     grade_id: str = Field(..., min_length=1, max_length=100)
+
+
+class DocIdPathParam(BaseModel):
+    doc_id: uuid.UUID = Field(...)
+
+
+class DocFilterParams(BaseModel):
+    model_config = {"extra": "forbid"}
+
+    page: int = Field(default=1, ge=1, le=1000)
+    limit: int = Field(default=5, ge=5, le=100)
+
+
+DocFilterQuery = Annotated[DocFilterParams, Query()]
