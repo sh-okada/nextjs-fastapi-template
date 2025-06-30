@@ -15,14 +15,24 @@ export const DocListPagination = ({
 }: DocListPaginationProps) => {
   const router = useRouter();
 
+  const clickTopButton = () => {
+    if (currentPage === 1) return;
+    router.push(paths.home.getHref({ page: String(1) }));
+  };
+
+  const clickLastButton = () => {
+    if (currentPage === totalPages) return;
+    router.push(paths.home.getHref({ page: String(totalPages) }));
+  };
+
   const clickPrevButton = () => {
     if (currentPage === 1) return;
-    router.push(paths.home.getHref({ page: (currentPage - 1).toString() }));
+    router.push(paths.home.getHref({ page: String(currentPage - 1) }));
   };
 
   const clickNextButton = () => {
     if (currentPage === totalPages) return;
-    router.push(paths.home.getHref({ page: (currentPage + 1).toString() }));
+    router.push(paths.home.getHref({ page: String(currentPage + 1) }));
   };
 
   return (
@@ -30,6 +40,8 @@ export const DocListPagination = ({
       className="justify-center"
       currentPage={currentPage}
       totalPages={totalPages}
+      onClickTop={clickTopButton}
+      onClickLast={clickLastButton}
       onClickPrev={clickPrevButton}
       onClickNext={clickNextButton}
     />
