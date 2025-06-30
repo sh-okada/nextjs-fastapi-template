@@ -1,18 +1,37 @@
 "use client";
 
-import {
-  Pagination,
-  type PaginationProps,
-} from "@/components/core/pagination/pagination";
+import { Pagination } from "@/components/core/pagination/pagination";
 import { paths } from "@/config/paths";
 import { useRouter } from "next/navigation";
 
-export type DocListPaginationProps = Omit<PaginationProps, "onPageChange">;
+export type DocListPaginationProps = {
+  currentPage: number;
+  totalPages: number;
+};
 
-export const DocListPagination = (props: DocListPaginationProps) => {
+export const DocListPagination = ({
+  currentPage,
+  totalPages,
+}: DocListPaginationProps) => {
   const router = useRouter();
-  const onPageChange = (page: number) => {
-    router.push(paths.home.getHref({ page: page.toString() }));
+
+  const clickPrevButton = () => {
+    if (currentPage === 1) return;
+    router.push(paths.home.getHref({ page: (currentPage - 1).toString() }));
   };
-  return <Pagination onPageChange={onPageChange} {...props} />;
+
+  const clickNextButton = () => {
+    if (currentPage === totalPages) return;
+    router.push(paths.home.getHref({ page: (currentPage + 1).toString() }));
+  };
+
+  return (
+    <Pagination
+      className="justify-center"
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onClickPrev={clickPrevButton}
+      onClickNext={clickNextButton}
+    />
+  );
 };

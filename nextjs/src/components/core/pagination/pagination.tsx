@@ -1,40 +1,31 @@
-"use client";
-
 import { Button } from "@/components/core/button";
-import { useEffect, useState } from "react";
+import type { ComponentProps } from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 
-export type PaginationProps = {
+export type PaginationProps = ComponentProps<"nav"> & {
+  currentPage: number;
   totalPages: number;
-  onPageChange?: (page: number) => void;
+  onClickPrev?: () => void;
+  onClickNext?: () => void;
 };
 
-export const Pagination = ({ totalPages, onPageChange }: PaginationProps) => {
-  const [currentPage, setCurrentPage] = useState(1);
-
-  useEffect(() => {
-    onPageChange?.(currentPage);
-  }, [currentPage]);
-
-  const clickPrevButton = () => {
-    if (currentPage === 1) return;
-    setCurrentPage(currentPage - 1);
-  };
-
-  const clickNextButton = () => {
-    if (currentPage === totalPages) return;
-    setCurrentPage(currentPage + 1);
-  };
-
+export const Pagination = ({
+  currentPage,
+  totalPages,
+  onClickPrev,
+  onClickNext,
+  className = "",
+  ...rest
+}: PaginationProps) => {
   return (
-    <nav className="flex items-center">
-      <Button variant="text" onClick={clickPrevButton}>
+    <nav className={`flex items-center gap-2 ${className}`} {...rest}>
+      <Button variant="text" onClick={onClickPrev}>
         <FaAngleLeft />
       </Button>
       <p>
         {currentPage}/{totalPages}
       </p>
-      <Button variant="text" onClick={clickNextButton}>
+      <Button variant="text" onClick={onClickNext}>
         <FaAngleRight />
       </Button>
     </nav>

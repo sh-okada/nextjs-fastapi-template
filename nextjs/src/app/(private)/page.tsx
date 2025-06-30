@@ -18,7 +18,7 @@ export default async function Page({ searchParams }: PageProps) {
   return (
     <PageContent title={paths.home.name}>
       <Suspense key={parzedGetDocsQueryParams.page} fallback={<Spinner />}>
-        <DocListContainer page={parzedGetDocsQueryParams.page} />
+        <DocListContainer page={parzedGetDocsQueryParams.page ?? 1} />
       </Suspense>
     </PageContent>
   );
