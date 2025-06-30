@@ -1,7 +1,8 @@
 export const paths = {
   home: {
     name: "このアプリについて",
-    getHref: () => "/",
+    getHref: (query: { page?: string }) =>
+      `/?${new URLSearchParams(query).toString()}`,
   },
   login: {
     name: "ログイン",
