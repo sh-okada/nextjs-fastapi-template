@@ -4,7 +4,7 @@ import { FaChevronDown } from "react-icons/fa6";
 type SelectItemProps = ComponentProps<"option">;
 
 const SelectItem = (props: SelectItemProps) => {
-	return <option {...props} />;
+  return <option {...props} />;
 };
 
 export type SelectItems<T> = { value: T; label: string }[];
@@ -22,24 +22,24 @@ export const selectBaseStyle = `
 `;
 
 export type SelectProps = ComponentProps<"select"> & {
-	isError?: boolean;
+  isError?: boolean;
 };
 
 export const Select: FunctionComponent<SelectProps> & {
-	Item: typeof SelectItem;
+  Item: typeof SelectItem;
 } = ({ isError, className = "", ...rest }: SelectProps) => {
-	return (
-		<span className="relative">
-			<select
-				className={`${selectBaseStyle} ${className}`}
-				aria-invalid={isError || undefined}
-				{...rest}
-			/>
-			<FaChevronDown
-				className={`absolute right-4 top-1/2 -translate-y-1/2 ${rest.disabled ? "text-gray-500" : "text-black"}`}
-			/>
-		</span>
-	);
+  return (
+    <span className="relative">
+      <select
+        className={`${selectBaseStyle} ${className}`}
+        aria-invalid={isError || undefined}
+        {...rest}
+      />
+      <FaChevronDown
+        className={`absolute right-4 top-1/2 -translate-y-1/2 ${rest.disabled ? "text-gray-500" : "text-black"}`}
+      />
+    </span>
+  );
 };
 
 Select.Item = SelectItem;

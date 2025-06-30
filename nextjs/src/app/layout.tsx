@@ -13,11 +13,7 @@ export const metadata: Metadata = {
   description: "Next.js + FastAPI サンプルアプリです。",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja" className={notoSans.className}>
       <body>{children}</body>

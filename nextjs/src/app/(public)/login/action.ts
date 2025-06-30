@@ -7,25 +7,25 @@ import { isBadRequestError } from "@/lib/axios";
 import { loginSchema } from "@/lib/zod/schema";
 
 export async function login(_prevState: unknown, formData: FormData) {
-	const submission = parseWithZod(formData, {
-		schema: loginSchema,
-	});
+  const submission = parseWithZod(formData, {
+    schema: loginSchema,
+  });
 
-	if (submission.status !== "success") {
-		return submission.reply();
-	}
+  if (submission.status !== "success") {
+    return submission.reply();
+  }
 
-	try {
-		await signIn("credentials", {
-			...Object.fromEntries(formData),
-			redirect: true,
-		});
-	} catch (error) {
-		if (error instanceof AuthError && isBadRequestError(error.cause?.err)) {
-			return submission.reply({
-				formErrors: ["ユーザ名またはパスワードが間違っています。"],
-			});
-		}
-		throw error;
-	}
+  try {
+    await signIn("credentials", {
+      ...Object.fromEntries(formData),
+      redirect: true,
+    });
+  } catch (error) {
+    if (error instanceof AuthError && isBadRequestError(error.cause?.err)) {
+      return submission.reply({
+        formErrors: ["ユーザ名またはパスワードが間違っています。"],
+      });
+    }
+    throw error;
+  }
 }
