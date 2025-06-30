@@ -1,9 +1,9 @@
 import {
   Children,
-  type HTMLAttributes,
-  type ReactNode,
   cloneElement,
+  type HTMLAttributes,
   isValidElement,
+  type ReactNode,
 } from "react";
 
 export type SlotProps = HTMLAttributes<HTMLElement> & {

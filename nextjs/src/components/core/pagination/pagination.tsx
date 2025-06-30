@@ -6,45 +6,54 @@ import {
   FaAnglesRight,
 } from "react-icons/fa6";
 import { Button } from "@/components/core/button";
+import { InternalLink } from "@/components/ui-parts/internal-link";
 
 export type PaginationProps = ComponentProps<"nav"> & {
   currentPage: number;
   totalPages: number;
-  onClickTop?: () => void;
-  onClickLast?: () => void;
-  onClickPrev?: () => void;
-  onClickNext?: () => void;
+  topUrl: string;
+  lastUrl: string;
+  prevUrl: string;
+  nextUrl: string;
 };
 
 export const Pagination = ({
   currentPage,
   totalPages,
-  onClickTop,
-  onClickLast,
-  onClickPrev,
-  onClickNext,
+  topUrl,
+  lastUrl,
+  prevUrl,
+  nextUrl,
   className = "",
   ...rest
 }: PaginationProps) => {
   return (
     <nav className={`flex items-center gap-2 ${className}`} {...rest}>
       <div className="flex">
-        <Button variant="text" onClick={onClickTop}>
-          <FaAnglesLeft />
+        <Button variant="text" asChild>
+          <InternalLink href={topUrl}>
+            <FaAnglesLeft />
+          </InternalLink>
         </Button>
-        <Button variant="text" onClick={onClickPrev}>
-          <FaAngleLeft />
+        <Button variant="text" asChild>
+          <InternalLink href={prevUrl}>
+            <FaAngleLeft />
+          </InternalLink>
         </Button>
       </div>
       <p>
         {currentPage}/{totalPages}
       </p>
       <div className="flex">
-        <Button variant="text" onClick={onClickNext}>
-          <FaAngleRight />
+        <Button variant="text" asChild>
+          <InternalLink href={nextUrl}>
+            <FaAngleRight />
+          </InternalLink>
         </Button>
-        <Button variant="text" onClick={onClickLast}>
-          <FaAnglesRight />
+        <Button variant="text" asChild>
+          <InternalLink href={lastUrl}>
+            <FaAnglesRight />
+          </InternalLink>
         </Button>
       </div>
     </nav>
