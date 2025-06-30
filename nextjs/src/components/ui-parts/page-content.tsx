@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 
 export type PageContentProps = {
   title: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const PageContent = ({ title, children }: PageContentProps) => {

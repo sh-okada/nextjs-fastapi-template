@@ -1,5 +1,6 @@
 import { Link } from "@/components/core/link";
 import { InternalLink } from "@/components/ui-parts/internal-link";
+import { paths } from "@/config/paths";
 
 export type Doc = {
   id: string;
@@ -14,7 +15,9 @@ export const DocListItem = ({ doc }: DocProps) => {
   return (
     <div className="py-2">
       <Link asChild>
-        <InternalLink href={`/doc/${doc.id}`}>{doc.title}</InternalLink>
+        <InternalLink href={paths.doc.getHref(doc.id)}>
+          {doc.title}
+        </InternalLink>
       </Link>
     </div>
   );
