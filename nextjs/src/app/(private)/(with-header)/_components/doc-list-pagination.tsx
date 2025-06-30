@@ -15,6 +15,7 @@ export const DocListPagination = async ({
 
   return (
     <Pagination
+      className="justify-center"
       {...getPaginationProps(currentPage, totalPages, (page: number) =>
         paths.home.getHref({ page: String(page) }),
       )}
