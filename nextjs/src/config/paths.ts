@@ -11,6 +11,10 @@ export const paths = {
     name: "新規登録",
     getHref: () => "/signup",
   },
+  doc: {
+    name: "ドキュメント",
+    getHref: (id: string) => `/doc/${id}`,
+  },
   simpleForm: {
     name: "シンプルなフォーム",
     getHref: () => "/sample/simple-form",

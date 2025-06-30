@@ -1,7 +1,7 @@
 import { axiosInstance } from "@/lib/axios";
 
 export type DepartmentResponse = {
-  id: number;
+  id: string;
   name: string;
 };
 

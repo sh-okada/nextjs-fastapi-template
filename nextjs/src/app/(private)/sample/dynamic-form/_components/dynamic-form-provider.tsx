@@ -1,12 +1,12 @@
 "use client";
 
+import { submitPersonalInfo } from "@/app/(private)/sample/dynamic-form/action";
+import { paths } from "@/config/paths";
+import { personalInfoSchema } from "@/lib/zod/schema";
 import { FormProvider, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { useRouter } from "next/navigation";
 import { type ReactNode, startTransition, useActionState } from "react";
-import { submitPersonalInfo } from "@/app/(private)/sample/dynamic-form/action";
-import { paths } from "@/config/paths";
-import { personalInfoSchema } from "@/lib/zod/schema";
 
 export type DynamicFormProviderProps = {
   children: ReactNode;
