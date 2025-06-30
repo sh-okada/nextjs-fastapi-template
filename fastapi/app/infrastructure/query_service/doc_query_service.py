@@ -1,4 +1,3 @@
-import uuid
 from typing import Annotated
 
 from fastapi import Depends
@@ -25,12 +24,12 @@ class DocQueryService(IDocQueryService):
         statement = select(db_models.Doc).offset(offset).limit(get_docs_command.limit)
         docs = self.__session.exec(statement).all()
 
-        return [query_models.Doc(str(doc.id), doc.title, doc.text) for doc in docs]
+        return [query_models.Doc(doc.id, doc.title, doc.text) for doc in docs]
 
     def get_doc(self, get_doc_command: commands.GetDoc) -> query_models.Doc:
-        doc = self.__session.get_one(db_models.Doc, uuid.UUID(get_doc_command.id))
+        doc = self.__session.get_one(db_models.Doc, get_doc_command.id)
 
-        return query_models.Doc(str(doc.id), doc.title, doc.text)
+        return query_models.Doc(doc.id, doc.title, doc.text)
 
 
 DocQueryServiceDep = Annotated[DocQueryService, Depends()]

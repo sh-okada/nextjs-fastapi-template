@@ -20,7 +20,7 @@ class DepartmentQueryService(IDepartmentQueryService):
         departments = self.__session.exec(statement).all()
 
         return [
-            query_models.Department(id=str(department.id), name=department.name)
+            query_models.Department(id=department.id, name=department.name)
             for department in departments
         ]
 

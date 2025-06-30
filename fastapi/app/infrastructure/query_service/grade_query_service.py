@@ -17,9 +17,7 @@ class GradeQueryService(IGradeQueryService):
         statement = select(db_models.Grade)
         grades = self.__session.exec(statement).all()
 
-        return [
-            query_models.Grade(id=str(grade.id), name=grade.name) for grade in grades
-        ]
+        return [query_models.Grade(id=grade.id, name=grade.name) for grade in grades]
 
 
 GradeQueryServiceDep = Annotated[GradeQueryService, Depends()]

@@ -33,7 +33,7 @@ def login(
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
 
-    access_token = create_access_token(str(user.id))
+    access_token = create_access_token(user.id)
 
     return responses.UserWithAccessToken(
         id=str(user.id),

@@ -19,7 +19,7 @@ def get_docs(
     return doc_query_service.get_docs(doc_filter_query)
 
 
-@docs_router.get("/{id}", response_model=list[responses.Doc])
+@docs_router.get("/{id}", response_model=responses.Doc)
 def get_doc(id: str, doc_query_service: DocQueryServiceDep):
     doc_id_path_param = requests.DocIdPathParam(doc_id=id)
 

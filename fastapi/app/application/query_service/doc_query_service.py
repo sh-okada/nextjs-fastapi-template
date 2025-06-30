@@ -12,5 +12,6 @@ class IDocQueryService(abc.ABC):
     def get_docs(self, get_docs_command: commands.GetDocs) -> list[query_models.Doc]:
         raise NotImplementedError()
 
+    @abc.abstractmethod
     def get_doc(self, get_doc_command: commands.GetDoc) -> query_models.Doc:
         raise NotImplementedError()
