@@ -7,9 +7,21 @@ on:
       - main
 
 jobs:
-  test:
+  jest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Greeting
         run: echo "Hello, world!"
+
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install dependencies
+        run: uv sync
+        working-directory: ./fastapi
+      - name: Run pytest
+        run: uv run pytest
+        working-directory: ./backend
