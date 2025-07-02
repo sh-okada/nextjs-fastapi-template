@@ -1,6 +1,6 @@
 "use client";
 
-import { useMarkdownEditor } from "@/components/ui-parts/markdown-editor/hooks/useMarkdownEditor";
+import { useCodeMirror } from "@/components/ui-parts/markdown-editor/hooks/use-code-mirror";
 import {
   defaultKeymap,
   history,
@@ -30,7 +30,7 @@ import { EditorView } from "codemirror";
 // ]);
 
 export const MarkdownEditor = () => {
-  const { editorRef } = useMarkdownEditor({
+  const { editorRef } = useCodeMirror({
     extensions: [
       placeholder("Type your markdown here..."),
       history(),

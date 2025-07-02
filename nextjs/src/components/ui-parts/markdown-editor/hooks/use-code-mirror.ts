@@ -2,9 +2,9 @@ import { EditorState, type EditorStateConfig } from "@codemirror/state";
 import { EditorView } from "codemirror";
 import { useEffect, useRef, useState } from "react";
 
-export type UseMarkdownEditorProps = EditorStateConfig;
+export type UseCodeMirrorProps = EditorStateConfig;
 
-export const useMarkdownEditor = (props: UseMarkdownEditorProps) => {
+export const useCodeMirror = (props: UseCodeMirrorProps) => {
   const editorRef = useRef(null);
   const [container, setContainer] = useState<HTMLDivElement>();
   const [view, setView] = useState<EditorView>();
