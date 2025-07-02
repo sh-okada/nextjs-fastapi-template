@@ -1,3 +1,5 @@
+import { Button } from "@/components/core/button";
+import { InternalLink } from "@/components/ui-parts/internal-link";
 import type { ComponentProps } from "react";
 import {
   FaAngleLeft,
@@ -5,8 +7,6 @@ import {
   FaAnglesLeft,
   FaAnglesRight,
 } from "react-icons/fa6";
-import { Button } from "@/components/core/button";
-import { InternalLink } from "@/components/ui-parts/internal-link";
 
 export type PaginationProps = ComponentProps<"nav"> & {
   currentPage: number;
