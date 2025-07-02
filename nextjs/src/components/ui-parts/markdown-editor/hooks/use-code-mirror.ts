@@ -2,7 +2,9 @@ import { EditorState, type EditorStateConfig } from "@codemirror/state";
 import { EditorView } from "codemirror";
 import { useEffect, useRef, useState } from "react";
 
-export type UseCodeMirrorProps = EditorStateConfig;
+export type UseCodeMirrorProps = EditorStateConfig & {
+  doc?: string;
+};
 
 export const useCodeMirror = (props: UseCodeMirrorProps) => {
   const editorRef = useRef(null);

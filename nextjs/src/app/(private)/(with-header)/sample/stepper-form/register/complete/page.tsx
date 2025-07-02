@@ -1,5 +1,4 @@
 import { Button } from "@/components/core/button";
-import { Section } from "@/components/core/section/section";
 import { Stepper } from "@/components/core/stepper/stepper";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { PageContent } from "@/components/ui-parts/page-content";
@@ -14,7 +13,9 @@ export default function Page() {
           <Stepper.Header>登録完了</Stepper.Header>
         </Stepper>
         <Button className="text-center" variant="outline" asChild>
-          <InternalLink href={paths.home.getHref()}>トップに戻る</InternalLink>
+          <InternalLink href={paths.home.getHref({})}>
+            トップに戻る
+          </InternalLink>
         </Button>
       </div>
     </PageContent>

@@ -3,14 +3,11 @@
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
 import { paths } from "@/config/paths";
-import { personalInfoSchema } from "@/lib/zod/schema";
+import { postDocSchema } from "@/lib/zod/schema";
 
-export async function submitPersonalInfo(
-  _prevState: unknown,
-  formData: FormData,
-) {
+export async function postDoc(_prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
-    schema: personalInfoSchema,
+    schema: postDocSchema,
   });
 
   if (submission.status !== "success") {

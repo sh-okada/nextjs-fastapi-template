@@ -1,6 +1,5 @@
 "use client";
 
-import { useCodeMirror } from "@/components/ui-parts/markdown-editor/hooks/use-code-mirror";
 import {
   defaultKeymap,
   history,
@@ -8,29 +7,19 @@ import {
   indentWithTab,
 } from "@codemirror/commands";
 import { markdown, markdownLanguage } from "@codemirror/lang-markdown";
-import {
-  HighlightStyle,
-  indentUnit,
-  syntaxHighlighting,
-} from "@codemirror/language";
-import { keymap, placeholder } from "@codemirror/view";
-import { tags } from "@lezer/highlight";
+import { indentUnit } from "@codemirror/language";
+import { keymap, placeholder, type ViewUpdate } from "@codemirror/view";
 import { EditorView } from "codemirror";
+import { useCodeMirror } from "@/components/ui-parts/markdown-editor/hooks/use-code-mirror";
 
-// const highlightStyle = HighlightStyle.define([
-//   { tag: tags.heading1, color: "black", fontSize: "1.4em" },
-//   { tag: tags.heading2, color: "black", fontSize: "1.3em" },
-//   { tag: tags.heading3, color: "black", fontSize: "1.2em" },
-//   { tag: tags.heading4, color: "black", fontSize: "1.1em" },
-//   { tag: tags.strong, color: "black", fontWeight: "700" },
-//   { tag: tags.quote, color: "#6a737d" },
-//   { tag: tags.emphasis, fontStyle: "italic" },
-//   { tag: tags.url, textDecoration: "underline" },
-//   { tag: tags.strikethrough, textDecoration: "line-through" },
-// ]);
+export type MarkdownEditorProps = {
+  doc?: string;
+  onChange?: (value: string) => void;
+};
 
-export const MarkdownEditor = () => {
+export const MarkdownEditor = ({ doc, onChange }: MarkdownEditorProps) => {
   const { editorRef } = useCodeMirror({
+    doc: doc,
     extensions: [
       placeholder("Type your markdown here..."),
       history(),
@@ -38,7 +27,6 @@ export const MarkdownEditor = () => {
       keymap.of(historyKeymap),
       keymap.of([indentWithTab]),
       indentUnit.of("    "),
-      // syntaxHighlighting(highlightStyle),
       markdown({
         base: markdownLanguage,
         completeHTMLTags: false,
@@ -67,6 +55,11 @@ export const MarkdownEditor = () => {
         ".cm-scroller": {
           overflow: "auto",
         },
+      }),
+      EditorView.updateListener.of((update: ViewUpdate) => {
+        if (update.docChanged) {
+          onChange?.(update.state.doc.toString());
+        }
       }),
     ],
   });

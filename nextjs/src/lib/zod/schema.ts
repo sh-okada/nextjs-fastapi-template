@@ -1,6 +1,6 @@
+import { z } from "zod";
 import { message } from "@/lib/zod/message";
 import { isPastOrToday, postalCodeRegex } from "@/lib/zod/validator";
-import { z } from "zod";
 
 const username = z
   .string({ message: message.required("ユーザー名") })
@@ -26,6 +26,13 @@ const years = z
 const department_id = z.string({ message: message.required("部署") });
 
 const grade_id = z.string({ message: message.required("グレード") });
+
+const docTitle = z
+  .string({ message: message.required("タイトル") })
+  .min(1)
+  .max(200);
+
+const docText = z.string().max(5000).optional();
 
 const name = z
   .string({ message: message.required("氏名") })
@@ -75,4 +82,9 @@ export const searchAddressQueryParams = z.object({
 
 export const getDocsQueryParams = z.object({
   page: z.preprocess((v) => Number(v), z.number()).optional(),
+});
+
+export const postDocSchema = z.object({
+  title: docTitle,
+  doc: docText,
 });
