@@ -21,7 +21,7 @@ export const MarkdownEditor = ({ doc, onChange }: MarkdownEditorProps) => {
   const { editorRef } = useCodeMirror({
     doc: doc,
     extensions: [
-      placeholder("Type your markdown here..."),
+      placeholder("# Hello World"),
       history(),
       keymap.of(defaultKeymap),
       keymap.of(historyKeymap),
@@ -36,6 +36,7 @@ export const MarkdownEditor = ({ doc, onChange }: MarkdownEditorProps) => {
           border: "1px solid #000000",
           borderRadius: "0.375rem",
           fontSize: "16px",
+          minHeight: "400px",
         },
         "&.cm-editor": {
           outline: "none",

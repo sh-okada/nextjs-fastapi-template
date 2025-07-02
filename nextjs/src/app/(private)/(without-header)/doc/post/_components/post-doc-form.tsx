@@ -38,6 +38,7 @@ export const PostDocForm = () => {
             <Field>
               <Field.Label htmlFor={fields.title.id}>タイトル</Field.Label>
               <Input
+                placeholder="例）イケてるコードとは？"
                 {...getInputProps(fields.title, { type: "text" })}
                 key={fields.title.key}
               />
