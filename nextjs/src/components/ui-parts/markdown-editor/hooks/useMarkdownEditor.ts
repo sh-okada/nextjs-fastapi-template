@@ -1,0 +1,31 @@
+import { EditorState } from "@codemirror/state";
+import { EditorView } from "codemirror";
+import { useEffect, useRef, useState } from "react";
+
+export const useMarkdownEditor = () => {
+  const editorRef = useRef(null);
+  const [container, setContainer] = useState<HTMLDivElement>();
+  const [view, setView] = useState<EditorView>();
+
+  // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
+  useEffect(() => {
+    if (editorRef.current) {
+      setContainer(editorRef.current);
+    }
+  }, [setContainer]);
+
+  useEffect(() => {
+    if (!view && container) {
+      const state = EditorState.create();
+      const viewCurrent = new EditorView({
+        state,
+        parent: container,
+      });
+      setView(viewCurrent);
+    }
+  }, [view, container]);
+
+  return {
+    editorRef,
+  };
+};
