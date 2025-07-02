@@ -1,4 +1,4 @@
-import { getDocs } from "@/api/doc/doc";
+import { getDocs } from "@/api/docs";
 import { Docs } from "@/app/(private)/(with-header)/_components/doc-list";
 
 export type DocListContainerProps = {

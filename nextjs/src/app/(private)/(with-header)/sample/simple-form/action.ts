@@ -1,6 +1,6 @@
 "use server";
 
-import { postProfile as postProfileApi } from "@/api/profile/profile";
+import { postProfile as postProfileApi } from "@/api/users";
 import { paths } from "@/config/paths";
 import { isConflictError } from "@/lib/axios";
 import { profileSchema } from "@/lib/zod/schema";

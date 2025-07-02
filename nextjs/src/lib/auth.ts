@@ -1,4 +1,4 @@
-import { login } from "@/api/login/login";
+import { login } from "@/api/auth";
 import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod/schema";
 import NextAuth from "next-auth";

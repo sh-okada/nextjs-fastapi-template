@@ -1,5 +1,5 @@
-import { getDepartments } from "@/api/department/department";
-import { getGrades } from "@/api/grade/grade";
+import { getDepartments } from "@/api/department";
+import { getGrades } from "@/api/grades";
 import type { SelectItems } from "@/components/core/select";
 import type { ReactNode } from "react";
 

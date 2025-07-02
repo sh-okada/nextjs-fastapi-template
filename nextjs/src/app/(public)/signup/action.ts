@@ -1,6 +1,6 @@
 "use server";
 
-import { signup as signupApi } from "@/api/signup/signup";
+import { signup as signupApi } from "@/api/auth";
 import { paths } from "@/config/paths";
 import { isBadRequestError } from "@/lib/axios";
 import { signUpSchema } from "@/lib/zod/schema";

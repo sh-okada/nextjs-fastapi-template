@@ -1,5 +1,5 @@
-import { getDepartments } from "@/api/department/department";
-import { getGrades } from "@/api/grade/grade";
+import { getDepartments } from "@/api/department";
+import { getGrades } from "@/api/grades";
 import { SimpleForm } from "@/app/(private)/(with-header)/sample/simple-form/_components/simple-form";
 
 export const SimpleFormContainer = async () => {

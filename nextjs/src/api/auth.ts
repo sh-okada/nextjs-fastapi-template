@@ -1,5 +1,5 @@
 import { axiosInstance } from "@/lib/axios";
-import type { loginSchema } from "@/lib/zod/schema";
+import type { loginSchema, signUpSchema } from "@/lib/zod/schema";
 import type { z } from "zod";
 
 export type LoginResponse = {
@@ -16,3 +16,8 @@ export const login = async (data: LoginRequest) =>
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
+
+export type SignUpRequest = z.infer<typeof signUpSchema>;
+
+export const signup = async (data: SignUpRequest) =>
+  axiosInstance.post("/auth/signup", data);

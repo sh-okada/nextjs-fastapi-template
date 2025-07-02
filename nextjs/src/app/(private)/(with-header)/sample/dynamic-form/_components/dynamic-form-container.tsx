@@ -1,4 +1,4 @@
-import { searchAddress } from "@/api/search/search";
+import { searchAddress } from "@/api/third-party/zipcloud/search";
 import { DynamicForm } from "@/app/(private)/(with-header)/sample/dynamic-form/_components/dynamic-form";
 
 export type DynamicFormContainerProps = {

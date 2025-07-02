@@ -1,4 +1,4 @@
-import { getDocCount } from "@/api/doc/doc";
+import { getDocCount } from "@/api/docs";
 import { getPaginationProps } from "@/components/core/pagination/helper/getPaginationProps";
 import { Pagination } from "@/components/core/pagination/pagination";
 import { paths } from "@/config/paths";
