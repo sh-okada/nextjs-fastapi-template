@@ -29,8 +29,7 @@ const grade_id = z.string({ message: message.required("グレード") });
 
 const docTitle = z
   .string({ message: message.required("タイトル") })
-  .min(1)
-  .max(200);
+  .max(200, { message: message.max("タイトル", 200) });
 
 const docText = z.string().max(5000).optional();
 

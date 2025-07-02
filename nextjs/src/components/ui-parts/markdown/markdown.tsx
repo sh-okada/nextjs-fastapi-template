@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+import remarkBreaks from "remark-breaks";
+import remarkGfm from "remark-gfm";
 import { MdCheckbox } from "@/components/ui-parts/markdown/parts/md-checkbox";
 import { MdCodeBlock } from "@/components/ui-parts/markdown/parts/md-code-block";
 import { MdH1 } from "@/components/ui-parts/markdown/parts/md-h1";
@@ -15,12 +18,9 @@ import { MdTh } from "@/components/ui-parts/markdown/parts/md-th";
 import { MdThead } from "@/components/ui-parts/markdown/parts/md-thead";
 import { MdTr } from "@/components/ui-parts/markdown/parts/md-tr";
 import { MdUl } from "@/components/ui-parts/markdown/parts/md-ul";
-import ReactMarkdown from "react-markdown";
-import remarkBreaks from "remark-breaks";
-import remarkGfm from "remark-gfm";
 
 export type MarkdownProps = {
-  body: string;
+  body?: string;
 };
 
 export const Markdown = ({ body }: MarkdownProps) => {

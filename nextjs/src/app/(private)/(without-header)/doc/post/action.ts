@@ -14,5 +14,7 @@ export async function postDoc(_prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
+  console.log(submission.value);
+
   redirect(paths.home.getHref({}));
 }

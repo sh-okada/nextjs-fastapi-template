@@ -16,6 +16,10 @@ export const paths = {
     name: "ドキュメント",
     getHref: (id: string) => `/doc/${id}`,
   },
+  postDoc: {
+    name: "ドキュメント投稿",
+    getHref: () => "/doc/post",
+  },
   simpleForm: {
     name: "シンプルなフォーム",
     getHref: () => "/sample/simple-form",

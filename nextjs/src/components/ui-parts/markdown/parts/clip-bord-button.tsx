@@ -1,7 +1,7 @@
 "use client";
 
-import { Button, type ButtonProps } from "@/components/core/button";
 import { type ReactNode, useRef, useState } from "react";
+import { Button, type ButtonProps } from "@/components/core/button";
 
 type ClipBordButtonProps = Omit<ButtonProps, "children" | "onClick"> & {
   text: string;
@@ -34,7 +34,7 @@ export const ClipBordButton = ({
   };
 
   return (
-    <Button onClick={handleClick} {...rest}>
+    <Button type="button" onClick={handleClick} {...rest}>
       {children(cliped)}
     </Button>
   );

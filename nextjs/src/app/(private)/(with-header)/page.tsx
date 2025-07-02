@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { DocListContainer } from "@/app/(private)/(with-header)/_components/doc-list-container";
 import { DocListPagination } from "@/app/(private)/(with-header)/_components/doc-list-pagination";
-import { MarkdownEditor } from "@/components/ui-parts/markdown-editor/markdown-editor";
 import { PageContent } from "@/components/ui-parts/page-content";
 import { Spinner } from "@/components/ui-parts/spinner";
 import { paths } from "@/config/paths";
@@ -23,7 +22,6 @@ export default async function Page({ searchParams }: PageProps) {
         <DocListContainer page={parzedGetDocsQueryParams.page ?? 1} />
       </Suspense>
       <DocListPagination currentPage={parzedGetDocsQueryParams.page ?? 1} />
-      <MarkdownEditor doc="# Hello World" />
     </PageContent>
   );
 }

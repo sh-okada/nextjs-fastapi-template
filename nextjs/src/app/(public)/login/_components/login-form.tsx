@@ -1,5 +1,8 @@
 "use client";
 
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { useActionState } from "react";
 import { login } from "@/app/(public)/login/action";
 import { Button } from "@/components/core/button";
 import { ErrorText } from "@/components/core/error-text";
@@ -9,9 +12,6 @@ import { Link } from "@/components/core/link";
 import { InternalLink } from "@/components/ui-parts/internal-link";
 import { paths } from "@/config/paths";
 import { loginSchema } from "@/lib/zod/schema";
-import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
-import { useActionState } from "react";
 
 export const LoginForm = () => {
   const [lastResult, action] = useActionState(login, null);
