@@ -1,15 +1,22 @@
+import { Brand } from "@/app/(private)/(with-header)/_components/brand";
 import { HumburgerMenu } from "@/app/(private)/(with-header)/_components/humburger-menu";
 import { LogoutButton } from "@/app/(private)/(with-header)/_components/logout-button";
+import { auth } from "@/lib/auth";
 
-export const Header = () => {
+export const Header = async () => {
+  const session = await auth();
+
   return (
     <header className="flex justify-between items-center">
       <div className="p-4">
-        <h1>サンプルアプリ</h1>
+        <Brand />
       </div>
-      <HumburgerMenu>
-        <LogoutButton />
-      </HumburgerMenu>
+      <div className="flex items-center gap-2">
+        <p>{session?.user?.name}</p>
+        <HumburgerMenu>
+          <LogoutButton />
+        </HumburgerMenu>
+      </div>
     </header>
   );
 };
