@@ -4,7 +4,7 @@ import jwt
 from fastapi import APIRouter, FastAPI, Request, status
 from fastapi.responses import JSONResponse
 from pydantic import ValidationError
-from sqlmodel import Session
+from sqlmodel import Session, delete
 
 from app.infrastructure.db import db_models
 from app.infrastructure.db.db import create_db_and_tables, engine
@@ -13,25 +13,6 @@ from app.interface.router.departments_router import departments_router
 from app.interface.router.docs_router import docs_router
 from app.interface.router.grades_router import grades_router
 from app.interface.router.users_router import users_router
-
-docs = [
-    db_models.Doc(title="ドキュメント1", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント2", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント3", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント4", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント5", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント6", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント7", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント8", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント9", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント10", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント11", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント12", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント13", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント14", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント15", text="## Hello, World"),
-    db_models.Doc(title="ドキュメント16", text="## Hello, World"),
-]
 
 grades = [
     db_models.Grade(name="S1"),
@@ -50,17 +31,19 @@ departments = [
     db_models.Department(name="営業システム改良プロジェクト"),
 ]
 
+delete_db_models = [db_models.Department, db_models.Grade]
+
 
 def insert_dummy_data():
     with Session(engine) as session:
-        session.add_all([*grades, *departments, *docs])
+        session.add_all([*grades, *departments])
         session.commit()
 
 
 def delete_dummy_data():
     with Session(engine) as session:
-        for model in [*grades, *departments, *docs]:
-            session.delete(model)
+        for delete_db_model in delete_db_models:
+            session.exec(delete(delete_db_model))
         session.commit()
 
 
