@@ -45,6 +45,9 @@ export const MarkdownEditor = ({ doc, onChange }: MarkdownEditorProps) => {
           outline: "4px solid #000000",
           outlineOffset: "2px",
         },
+        ".cm-line": {
+          padding: "0px",
+        },
         "&:focus-visible": {
           outline: "4px solid #000000",
           outlineOffset: "2px",

@@ -28,7 +28,7 @@ export const PostDocForm = () => {
     },
     shouldValidate: "onBlur",
   });
-  const doc = useInputControl(fields.doc);
+  const text = useInputControl(fields.text);
 
   return (
     <form {...getFormProps(form)} action={action}>
@@ -46,14 +46,14 @@ export const PostDocForm = () => {
             </Field>
             <Fieldset>
               <Fieldset.Legend>内容</Fieldset.Legend>
-              <MarkdownEditor doc={doc.value} onChange={doc.change} />
+              <MarkdownEditor doc={text.value} onChange={text.change} />
             </Fieldset>
           </Section.Content>
         </Section>
         <Section>
           <Section.Header>プレビュー</Section.Header>
           <Section.Content>
-            <Markdown body={doc.value} />
+            <Markdown body={text.value} />
           </Section.Content>
         </Section>
         <Button type="submit">投稿</Button>

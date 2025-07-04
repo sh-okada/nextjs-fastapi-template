@@ -12,11 +12,17 @@ class PostProfile:
 
 
 @dataclass
+class PostDoc:
+    title: str
+    text: str
+
+
+@dataclass(frozen=True)
 class GetDocs:
     page: int
     limit: int
 
 
-@dataclass
+@dataclass(frozen=True)
 class GetDoc:
     id: str

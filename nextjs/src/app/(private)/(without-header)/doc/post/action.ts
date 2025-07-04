@@ -2,6 +2,7 @@
 
 import { parseWithZod } from "@conform-to/zod";
 import { redirect } from "next/navigation";
+import { postDoc as postDocApi } from "@/api/docs";
 import { paths } from "@/config/paths";
 import { postDocSchema } from "@/lib/zod/schema";
 
@@ -14,7 +15,7 @@ export async function postDoc(_prevState: unknown, formData: FormData) {
     return submission.reply();
   }
 
-  console.log(submission.value);
+  await postDocApi(submission.value);
 
   redirect(paths.home.getHref({}));
 }

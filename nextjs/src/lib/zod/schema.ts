@@ -85,5 +85,5 @@ export const getDocsQueryParams = z.object({
 
 export const postDocSchema = z.object({
   title: docTitle,
-  doc: docText,
+  text: docText,
 });

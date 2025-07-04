@@ -1,6 +1,7 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Response, status
 
 from app.application import commands
+from app.application.use_case.post_doc_use_case import PostDocUseCaseDep
 from app.infrastructure.query_service.doc_query_service import DocQueryServiceDep
 from app.interface import requests, responses
 
@@ -24,3 +25,12 @@ def get_doc(id: str, doc_query_service: DocQueryServiceDep):
     doc_id_path_param = requests.DocIdPathParam(doc_id=id)
 
     return doc_query_service.get_doc(commands.GetDoc(doc_id_path_param.doc_id))
+
+
+@docs_router.post("")
+def post_doc(post_doc_request: requests.PostDoc, post_doc_use_case: PostDocUseCaseDep):
+    post_doc_use_case.execute(
+        commands.PostDoc(post_doc_request.title, post_doc_request.text)
+    )
+
+    return Response(status_code=status.HTTP_201_CREATED)

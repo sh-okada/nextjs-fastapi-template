@@ -17,6 +17,11 @@ class PostProfile(BaseModel):
     grade_id: str = Field(..., min_length=1, max_length=100)
 
 
+class PostDoc(BaseModel):
+    title: str = Field(..., max_length=200)
+    text: str = Field(..., max_length=5000)
+
+
 class DocIdPathParam(BaseModel):
     doc_id: str = Field(..., min_length=1, max_length=100)
 
