@@ -12,14 +12,14 @@ class SignUp(BaseModel):
 
 class PostProfile(BaseModel):
     joining_date: date = Field(...)
-    years: int = Field(..., ge=1, le=40)
-    department_id: str = Field(..., min_length=1, max_length=100)
-    grade_id: str = Field(..., min_length=1, max_length=100)
+    years: int = Field(...)
+    department_id: str = Field(...)
+    grade_id: str = Field(...)
 
 
 class PostDoc(BaseModel):
-    title: str = Field(..., max_length=200)
-    text: str = Field(..., max_length=5000)
+    title: str = Field(...)
+    text: str = Field(...)
 
 
 class DocIdPathParam(BaseModel):
