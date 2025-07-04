@@ -11,7 +11,7 @@ export const DocListPagination = async ({
   currentPage,
 }: DocListPaginationProps) => {
   const docCount = (await getDocCount()).data;
-  const totalPages = Math.ceil(docCount.count / 5);
+  const totalPages = Math.max(1, Math.ceil(docCount.count / 5));
 
   return (
     <Pagination
